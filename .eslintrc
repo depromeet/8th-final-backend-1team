@@ -1,0 +1,29 @@
+{
+  "extends": ["google"],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2018,
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
+  "rules": {
+    "no-console": 0,
+    "max-len": ["warn", { "code": 120 }],
+    "camelcase": "warn",
+    "indent": ["error", 4],
+    "require-jsdoc": 0,
+    "new-cap": 1,
+    "no-unused-vars": 1
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  }
+}

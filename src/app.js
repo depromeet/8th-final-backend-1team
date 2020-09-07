@@ -1,0 +1,46 @@
+import express from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import {expressMiddleware as rTracerExpressMiddleware} from 'cls-rtracer';
+import {moduleLogger} from '@src/logger';
+import {handle404Error, handleError} from '@src/middleware/error-middleare';
+import {traceIdMiddleware} from '@src/middleware/tracerId-middleware';
+import v1Router from '@src/routes/v1';
+
+const logger = moduleLogger('App');
+
+const app = express();
+
+app.use(helmet());
+app.use(cors());
+app.use(cookieParser());
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
+app.set('etag', false);
+
+app.use(traceIdMiddleware);
+app.use(rTracerExpressMiddleware({
+    useHeader: true,
+    headerName: 'trace-id',
+}));
+app.use(morgan('combined', {
+    stream: {
+        write: (message) => logger.info(message),
+    },
+}));
+
+app.get('/ping', (req, res, next) => {
+    // throw new ParameterException();
+    return res.status(200).end('pong');
+});
+
+app.use('/v1', v1Router);
+
+// exception handling
+app.use(handle404Error);
+app.use(handleError);
+
+export default app;
