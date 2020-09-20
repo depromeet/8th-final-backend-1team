@@ -33,7 +33,6 @@ app.use(morgan('combined', {
 }));
 
 app.get('/ping', (req, res, next) => {
-    // throw new ParameterException();
     return res.status(200).end('pong');
 });
 
