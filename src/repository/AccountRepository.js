@@ -20,11 +20,12 @@ export const saveAccount = async ({
     provider,
     providerId,
 }) => {
-    return Account.create({
+    const account = await Account.create({
         uuid,
         nickname,
         profileUrl,
         provider,
         providerId,
     });
+    return account.dataValues;
 };
