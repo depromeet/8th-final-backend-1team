@@ -50,3 +50,12 @@ export const init = (sequelize) =>
         timestamps: false,
         schema: config.db.default.schema,
     });
+
+
+// export const associate = () => {
+//     logger.debug('Sample2 associate success');
+//     Sample2.belongsTo(Sample, {
+//         foreignKey: 'sample1',
+//         targetKey: 'seq',
+//     });
+// };
