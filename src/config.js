@@ -26,10 +26,10 @@ export const config = {
             logging: process.env.DB_DEFAULT_LOGGING === 'true',
             maximumPoolSize: process.env.DB_DEFAULT_MAXIMUM_POOL_SIZE ?
                 parseInt(process.env.DB_DEFAULT_MAXIMUM_POOL_SIZE) :
-                1000,
+                30,
             idlePoolSize: process.env.DB_DEFAULT_IDLE_POOL_SIZE ?
                 parseInt(process.env.DB_DEFAULT_IDLE_POOL_SIZE) :
-                50000,
+                5000,
             connectionTimeout: process.env.DB_DEFAULT_CONNECTION_TIMEOUT ?
                 parseInt(process.env.DB_DEFAULT_CONNECTION_TIMEOUT) :
                 10000,
@@ -38,6 +38,17 @@ export const config = {
     jwt: {
         secret: process.env.JWT_SECRET || '',
         expiresIn: process.env.JWT_EXPIRATION || '7d',
-        iss: process.env.JWT_ISS || 'depromeet.com',
+        iss: process.env.JWT_ISS || 'accounts.depromeet.com',
+    },
+    auth: {
+        kakao: {
+            apiKey: process.env.KAKAO_API_KEY || '',
+        },
+        apple: {
+            teamId: process.env.APPLE_TEAM_ID || '',
+            keyId: process.env.APPLE_KEY_ID || '',
+            privateKey: process.env.APPLE_PRIVATE_KEY || '',
+            clientId: process.env.APPLE_CLIENT_ID || '',
+        },
     },
 };
