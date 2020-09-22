@@ -1,0 +1,55 @@
+'/auth/signin/kakao':
+  post:
+    tags:
+      - auth
+    summary: '카카오 로그인 API'
+    description: '서비스에 로그인하는 API 입니다.'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - r1
+              - r2
+            properties:
+              r1:
+                type: 'string'
+                description: '설명'
+              r2:
+                type: 'string'
+                description: '설명'
+    responses:
+      200:
+        $ref: '#/components/responses/200'
+      500:
+        $ref: '#/components/responses/500'
+
+'/auth/signin/apple':
+  post:
+    tags:
+      - auth
+    summary: '애플 로그인 API'
+    description: '서비스에 로그인하는 API 입니다.'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - r1
+              - r2
+            properties:
+              r1:
+                type: 'string'
+                description: '설명'
+              r2:
+                type: 'string'
+                description: '설명'
+    responses:
+      200:
+        $ref: '#/components/responses/200'
+      500:
+        $ref: '#/components/responses/500'

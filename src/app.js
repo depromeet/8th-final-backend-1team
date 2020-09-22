@@ -1,9 +1,11 @@
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import {expressMiddleware as rTracerExpressMiddleware} from 'cls-rtracer';
+import swaggerSpecs from '@src/swagger';
 import {moduleLogger} from '@src/logger';
 import {handle404Error, handleError} from '@src/middleware/error-middleare';
 import {traceIdMiddleware} from '@src/middleware/tracerId-middleware';
@@ -37,6 +39,10 @@ app.get('/ping', (req, res, next) => {
 });
 
 app.use('/v1', v1Router);
+
+if (process.env.NODE_ENV !== 'production') {
+    app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
+}
 
 // exception handling
 app.use(handle404Error);
