@@ -1,0 +1,68 @@
+200:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            type: string
+          timestamp:
+            type: string
+          message:
+            type: string
+        example:
+          code: '200'
+          timestamp: '2000-01-01T00:00:00.000Z'
+          message: null
+          data: null
+400:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            type: string
+          timestamp:
+            type: string
+          message:
+            type: string
+        example:
+          code: '400'
+          timestamp: '2000-01-01T00:00:00.000Z'
+          message: 'Invalid Parameter'
+          data: null
+404:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            type: string
+          timestamp:
+            type: string
+          message:
+            type: string
+        example:
+          code: '404'
+          timestamp: '2000-01-01T00:00:00.000Z'
+          message: 'Not Found'
+          data: null
+500:
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          code:
+            type: string
+          timestamp:
+            type: string
+          message:
+            type: string
+        example:
+          code: '500'
+          timestamp: '2000-01-01T00:00:00.000Z'
+          message: 'Internal Server Error'
+          data: null

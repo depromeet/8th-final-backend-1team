@@ -1,0 +1,17 @@
+'/samples/{id}':
+  delete:
+    tags:
+      - 태그
+    summary: '샘플 API'
+    description: 'API에 대한 설명을 하는 부분입니다.'
+    parameters:
+      - name: parameter
+        description: 'parameter'
+        in: path
+        type: 'integer'
+        required: true
+    responses:
+      200:
+        $ref: '#/components/responses/200'
+      500:
+        $ref: '#/components/responses/500'
