@@ -1,4 +1,4 @@
-'/auth/signin/kakao':
+'/v1/auth/signin/kakao':
   post:
     tags:
       - auth
@@ -38,7 +38,7 @@
       500:
         $ref: '#/components/responses/500'
 
-'/auth/signin/apple':
+'/v1/auth/signin/apple':
   post:
     tags:
       - auth
