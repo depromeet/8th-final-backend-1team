@@ -11,18 +11,30 @@
           schema:
             type: object
             required:
-              - r1
-              - r2
+              - token
             properties:
-              r1:
+              token:
                 type: 'string'
-                description: '설명'
-              r2:
-                type: 'string'
-                description: '설명'
+                description: '카카오 로그인 후 받는 access token'
     responses:
       200:
-        $ref: '#/components/responses/200'
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    jwt:
+                      type: string
+                    userCreated:
+                      type: boolean
       500:
         $ref: '#/components/responses/500'
 
@@ -39,17 +51,29 @@
           schema:
             type: object
             required:
-              - r1
-              - r2
+              - code
             properties:
-              r1:
+              code:
                 type: 'string'
-                description: '설명'
-              r2:
-                type: 'string'
-                description: '설명'
+                description: '애플 로그인 후 받는 authorized code'
     responses:
       200:
-        $ref: '#/components/responses/200'
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    jwt:
+                      type: string
+                    userCreated:
+                      type: boolean
       500:
         $ref: '#/components/responses/500'

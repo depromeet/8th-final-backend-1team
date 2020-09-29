@@ -6,7 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test nyc --require @babel/register --require @babel/polyfill mocha test/**/*.js --timeout 5000 -w",
     "prebuild": "rm -rf dist",
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir dist --copy-files",
     "start": "node dist/bin/www.js",
     "prestart:local": "cp ./.env.local ./.env",
     "start:local": "NODE_ENV=development nodemon --exec babel-node src/bin/www.js --ignore 'test'",
