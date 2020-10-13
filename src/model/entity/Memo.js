@@ -1,19 +1,18 @@
 import {Model, DataTypes} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
-import {Provider} from './Provider';
 import {History} from './History';
 
-const logger = moduleLogger('Account');
+const logger = moduleLogger('Memo');
 
-export class Account extends Model {
+export class Memo extends Model {
     toJSON() {
         return super.toJSON();
     }
 }
 
 export const init = (sequelize) =>
-    Account.init({
+    Memo.init({
         id: {
             field: 'id',
             primaryKey: true,
@@ -21,15 +20,15 @@ export const init = (sequelize) =>
             allowNull: false,
             autoIncrement: true,
         },
-        nickname: {
-            field: 'nickname',
+        title: {
+            field: 'title',
             type: DataTypes.STRING,
             allowNull: false,
         },
-        profileImage: {
-            field: 'profile_image',
+        detail: {
+            field: 'detail',
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         createdAt: {
             field: 'created_at',
@@ -41,21 +40,20 @@ export const init = (sequelize) =>
             type: DataTypes.DATE,
             allowNull: false,
         },
+        historyId: {
+            field: 'history_id',
+            type: DataTypes.BIGINT,
+            allowNull: false,
+        },
     }, {
         sequelize,
-        tableName: 't_account',
+        tableName: 't_memo',
         timestamps: false,
         schema: config.db.default.schema,
     });
 
-Account.associate = () => {
-    Account.hasOne(Provider);
-    Account.hasOne(History);
+export const associate = () => {
+    Memo.belongsTo(History, {
+        foreignKey: 'history_id',
+    });
 };
-// export const associate = () => {
-//     logger.debug('Sample2 associate success');
-//     Sample2.belongsTo(Sample, {
-//         foreignKey: 'sample1',
-//         targetKey: 'seq',
-//     });
-// };
