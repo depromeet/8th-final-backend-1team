@@ -1,7 +1,6 @@
 import {Model, DataTypes} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
-import { History_Tag } from './History_tag';
 
 const logger = moduleLogger('Tag');
 
@@ -37,6 +36,3 @@ export const init = (sequelize) =>
         schema: config.db.default.schema,
     });
 
-Tag.associate = () => {
-    Tag.hasOne(History_Tag);
-};

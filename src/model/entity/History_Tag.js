@@ -41,6 +41,7 @@ export const init = (sequelize) =>
 export const associate = () => {
     History_Tag.belongsTo(History, {
         foreignKey: 'history_id',
+        onDelete: 'CASECADE',
     });
     History_Tag.belongsTo(Tag, {
         foreignKey: 'tag_id',

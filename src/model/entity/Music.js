@@ -26,12 +26,13 @@ export const init = (sequelize) =>
         },
         createdAt: {
             field: 'created_at',
-            type: DataTypes.DATE,
+            type: 'TIMESTAMP',
             allowNull: false,
+            defaultValue: sequelize.NOW,
         },
         updatedAt: {
             field: 'updated_at',
-            type: DataTypes.DATE,
+            type: 'TIMESTAMP',
             allowNull: false,
         },
         contentLength: {
@@ -46,6 +47,3 @@ export const init = (sequelize) =>
         schema: config.db.default.schema,
     });
 
-Music.associate = () => {
-    Music.hasOne(Incense);
-};

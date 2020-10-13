@@ -37,8 +37,9 @@ export const init = (sequelize) =>
         },
         createdAt: {
             field: 'created_at',
-            type: DataTypes.DATE,
+            type: 'TIMESTAMP',
             allowNull: false,
+            defaultValue: sequelize.NOW,
         },
     }, {
         sequelize,

@@ -92,3 +92,6 @@ web_modules/
 
 # build file
 dist/
+
+#token
+.http

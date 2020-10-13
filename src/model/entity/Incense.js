@@ -69,7 +69,3 @@ export const associate = () => {
         foreignKey: 'music_id',
     });
 };
-
-Incense.associate = () => {
-    Incense.hasOne(History);
-};

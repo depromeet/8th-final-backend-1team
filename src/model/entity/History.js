@@ -22,7 +22,7 @@ export const init = (sequelize) =>
             allowNull: false,
             autoIncrement: true,
         },
-        play_time: {
+        playTime: {
             field: 'play_time',
             type: DataTypes.BIGINT,
             allowNull: false,
@@ -39,8 +39,9 @@ export const init = (sequelize) =>
         },
         createdAt: {
             field: 'created_at',
-            type: DataTypes.DATE,
+            type: 'TIMESTAMP',
             allowNull: false,
+            defaultValue: sequelize.NOW,
         },
     }, {
         sequelize,
@@ -58,7 +59,3 @@ export const associate = () => {
     });
 };
 
-History.associate = () => {
-    History.hasOne(Memo);
-    History.hasOne(History_Tag);
-};

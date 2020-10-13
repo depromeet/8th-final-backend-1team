@@ -32,12 +32,13 @@ export const init = (sequelize) =>
         },
         createdAt: {
             field: 'created_at',
-            type: DataTypes.DATE,
+            type: 'TIMESTAMP',
             allowNull: false,
+            defaultValue: sequelize.NOW,
         },
         updatedAt: {
             field: 'updated_at',
-            type: DataTypes.DATE,
+            type: 'TIMESTAMP',
             allowNull: false,
         },
         historyId: {
@@ -55,5 +56,6 @@ export const init = (sequelize) =>
 export const associate = () => {
     Memo.belongsTo(History, {
         foreignKey: 'history_id',
+        onDelete: 'CASECADE',
     });
 };
