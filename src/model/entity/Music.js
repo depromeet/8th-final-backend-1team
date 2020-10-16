@@ -1,4 +1,4 @@
-import {Model, DataTypes} from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
 import {Incense} from './Incense';
@@ -39,7 +39,7 @@ export const init = (sequelize) =>
             },
             contentLength: {
                 field: 'content_length',
-                type: DataTypes.BIGINT,
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
         },
@@ -52,7 +52,7 @@ export const init = (sequelize) =>
     );
 
 export const associate = () => {
-    Music.hasOne(Incense, {
-        foreignKey: 'music_id',
-    });
+    Music.hasOne(Incense);
+
+    return Music;
 };

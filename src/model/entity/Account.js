@@ -52,9 +52,8 @@ export const init = (sequelize) =>
 
 export const associate = () => {
     Account.hasOne(Provider, {
-        foreignKey: 'account_id',
+        onDelete: 'CASECADE',
     });
-    Account.hasMany(History, {
-        foreignKey: 'account_id',
-    });
+    Account.hasMany(History);
+    return Account;
 };

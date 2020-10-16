@@ -1,6 +1,8 @@
-import {Model, DataTypes} from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
+import {Tag} from '@src/model/entity/Tag';
+import {History} from '@src/model/entity/History';
 
 const logger = moduleLogger('History_Tag');
 
@@ -10,7 +12,7 @@ export class History_Tag extends Model {
     }
 }
 
-export const init = (sequelize) =>
+export const link = (sequelize) =>
     History_Tag.init({
         id: {
             field: 'id',
@@ -23,11 +25,19 @@ export const init = (sequelize) =>
             field: 'history_id',
             type: DataTypes.BIGINT,
             allowNull: false,
+            references: {
+                model: History,
+                key: 'id',
+            },
         },
         tagId: {
             field: 'tag_id',
             type: DataTypes.BIGINT,
             allowNull: false,
+            references: {
+                model: Tag,
+                key: 'id',
+            },
         },
     }, {
         sequelize,

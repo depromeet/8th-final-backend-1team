@@ -39,7 +39,7 @@ export const init = (sequelize) =>
             },
             contentLength: {
                 field: 'content_length',
-                type: DataTypes.BIGINT,
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
         },
@@ -52,7 +52,7 @@ export const init = (sequelize) =>
     );
 
 export const associate = () => {
-    Video.hasOne(Incense, {
-        foreignKey: 'video_id',
-    });
+    Video.hasOne(Incense);
+
+    return Video;
 };

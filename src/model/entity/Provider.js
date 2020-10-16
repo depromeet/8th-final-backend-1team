@@ -1,6 +1,7 @@
-import {Model, DataTypes} from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
+import {Account} from '@src/model/entity/Account';
 
 const logger = moduleLogger('Provider');
 
@@ -24,14 +25,14 @@ export const init = (sequelize) =>
             type: DataTypes.STRING,
             allowNull: false,
         },
-        proivderName: {
+        providerName: {
             field: 'provider_name',
             type: DataTypes.STRING,
             allowNull: false,
         },
         accountId: {
             field: 'account_id',
-            type: DataTypes.STRING,
+            type: DataTypes.BIGINT,
             allowNull: false,
         },
         createdAt: {
@@ -46,3 +47,12 @@ export const init = (sequelize) =>
         timestamps: false,
         schema: config.db.default.schema,
     });
+
+export const associate = () => {
+    Provider.belongsTo(Account, {
+        targetKey: 'id',
+        foreignKey: 'account_id',
+    });
+
+    return Provider;
+};

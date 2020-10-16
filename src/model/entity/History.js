@@ -3,6 +3,9 @@ import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
 import {Memo} from './Memo';
 import {History_Tag} from './History_Tag';
+import {Account} from '@src/model/entity/Account';
+import {Incense} from '@src/model/entity/Incense';
+import {Tag} from '@src/model/entity/Tag';
 
 const logger = moduleLogger('History');
 
@@ -24,7 +27,7 @@ export const init = (sequelize) =>
             },
             playTime: {
                 field: 'play_time',
-                type: DataTypes.BIGINT,
+                type: DataTypes.INTEGER,
                 allowNull: false,
             },
             accountId: {
@@ -53,11 +56,20 @@ export const init = (sequelize) =>
     );
 
 export const associate = () => {
-    History.hasOne(Memo, {
-        foreignKey: 'history_id',
-    });
-    History.hasMany(History_Tag, {
-        foreignKey: 'history_id',
+    History.hasMany(Memo, {
         onDelete: 'CASECADE',
     });
+    History.belongsToMany(Tag, {
+        through: History_Tag,
+    });
+    History.belongsTo(Incense, {
+        targetKey: 'id',
+        foreignKey: 'incense_id',
+    });
+    History.belongsTo(Account, {
+        targetKey: 'id',
+        foreignKey: 'account_id',
+    });
+
+    return History;
 };

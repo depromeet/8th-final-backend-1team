@@ -1,7 +1,9 @@
-import {Model, DataTypes} from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
 import {History} from './History';
+import {Video} from '@src/model/entity/Video';
+import {Music} from '@src/model/entity/Music';
 
 const logger = moduleLogger('Incense');
 
@@ -62,7 +64,15 @@ export const init = (sequelize) =>
     );
 
 export const associate = () => {
-    Incense.hasOne(History, {
-        foreignKey: 'incense_id',
+    Incense.hasMany(History);
+    Incense.belongsTo(Music, {
+        targetKey: 'id',
+        foreignKey: 'music_id',
     });
+    Incense.belongsTo(Video, {
+        targetKey: 'id',
+        foreignKey: 'video_id',
+    });
+
+    return Incense;
 };

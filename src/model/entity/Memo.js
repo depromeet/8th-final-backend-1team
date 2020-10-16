@@ -55,7 +55,9 @@ export const init = (sequelize) =>
 
 export const associate = () => {
     Memo.belongsTo(History, {
+        targetKey: 'id',
         foreignKey: 'history_id',
-        onDelete: 'CASECADE',
     });
+
+    return Memo;
 };

@@ -2,6 +2,7 @@ import {Model, DataTypes} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
 import {History_Tag} from './History_Tag';
+import {History} from '@src/model/entity/History';
 
 const logger = moduleLogger('Tag');
 
@@ -41,7 +42,9 @@ export const init = (sequelize) =>
     );
 
 export const associate = () => {
-    Tag.hasMany(History_Tag, {
-        foreignKey: 'tag_id',
+    Tag.belongsToMany(History, {
+        through: History_Tag,
     });
+
+    return Tag;
 };
