@@ -1,7 +1,7 @@
 import {Model, DataTypes} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
-import { History_Tag } from './History_tag';
+import { History_Tag } from './History_Tag';
 
 const logger = moduleLogger('Tag');
 
