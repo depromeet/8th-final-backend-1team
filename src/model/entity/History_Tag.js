@@ -1,8 +1,6 @@
 import {Model, DataTypes} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
-import {History} from './History';
-import {Tag} from './Tag';
 
 const logger = moduleLogger('History_Tag');
 
@@ -37,13 +35,3 @@ export const init = (sequelize) =>
         timestamps: false,
         schema: config.db.default.schema,
     });
-
-export const associate = () => {
-    History_Tag.belongsTo(History, {
-        foreignKey: 'history_id',
-        onDelete: 'CASECADE',
-    });
-    History_Tag.belongsTo(Tag, {
-        foreignKey: 'tag_id',
-    });
-};

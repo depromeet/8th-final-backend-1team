@@ -1,7 +1,6 @@
 import {Model, DataTypes} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
-import {Account} from './Account';
 
 const logger = moduleLogger('Provider');
 
@@ -47,9 +46,3 @@ export const init = (sequelize) =>
         timestamps: false,
         schema: config.db.default.schema,
     });
-
-export const associate = () => {
-    Provider.belongsTo(Account, {
-        foreignKey: 'account_id',
-    });
-};
