@@ -4,12 +4,12 @@ dotenv.config();
 export const config = {
     server: {
         port: process.env.PORT || '31923',
-        name: process.env.SERVER_NAME || 'aroma-server',
+        name: process.env.SERVER_NAME || 'fragraph-server',
         env: process.env.NODE_ENV || 'development',
         log: {
             useFile: process.env.LOG_USE_FILE === 'true',
             logLevel: process.env.LOG_LEVEL || 'debug',
-            filepath: process.env.LOG_FILE_PATH || '/data/aroma-server/logs',
+            filepath: process.env.LOG_FILE_PATH || '/data/fragraph-server/logs',
         },
     },
     db: {
@@ -18,7 +18,7 @@ export const config = {
             username: process.env.DB_DEFAULT_USERNAME || '',
             password: process.env.DB_DEFAULT_PASSWORD || '',
             database: process.env.DB_DEFAULT_DATABASE ||'postgres',
-            schema: process.env.DB_DEFAULT_SCHEMA ||'aroma',
+            schema: process.env.DB_DEFAULT_SCHEMA ||'fragraph',
             host: process.env.DB_DEFAULT_HOST || '127.0.0.1',
             port: process.env.DB_DEFAULT_PORT ?
                 parseInt(process.env.DB_DEFAULT_PORT) :
