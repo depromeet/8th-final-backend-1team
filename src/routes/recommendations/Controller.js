@@ -42,6 +42,35 @@ export const getRecommendation = async (req, res, next) => {
                         'url': 'https://fragraph.s3.ap-northeast-2.amazonaws.com/6.gif',
                     },
                 },
+                {
+                    'tags': [
+                        {
+                            'id': 1,
+                            'name': '신나는',
+                            'weight': 0.7,
+                        },
+                        {
+                            'id': 2,
+                            'name': '설레서 웃음 나오는',
+                            'weight': 0.2,
+                        },
+                    ],
+                    'incense': {
+                        'id': 2,
+                        'title': 'It's Incense2',
+                        'image': 'https://kscory.com/assets/hyperledger/network-1/hyperledger-network1_structure.png',
+                        'detail': '이거 향 맞음',
+                    },
+                    'music': {
+                        'id': 1,
+                        'url': 'https://fragraph.xxx.xxx/xxxx/xxx',
+                        'contentLength': 300,
+                    },
+                    'video': {
+                        'id': 1,
+                        'url': 'https://fragraph.s3.ap-northeast-2.amazonaws.com/6.gif',
+                    },
+                },
             ],
         }));
     } catch (e) {
