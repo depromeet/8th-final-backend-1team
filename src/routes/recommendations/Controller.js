@@ -29,7 +29,7 @@ export const getRecommendation = async (req, res, next) => {
                     'incense': {
                         'id': 1,
                         'title': 'Nag Champa',
-                        'image': 'easfeffe111.jpg',
+                        'image': 'https://kscory.com/assets/design/strategy/design-strategy-03.png',
                         'detail': '훈연향 계열로 바디감이 좋으며 혈액순환을 도우며, 영적치유, 살균 효능이 있습니다.',
                     },
                     'music': {
