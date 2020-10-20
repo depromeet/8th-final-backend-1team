@@ -42,7 +42,7 @@ export const getHistory = async (req, res, next) => {
                         'image': 'https://kscory.com/assets/design/strategy/design-strategy-03.png',
                         'detail': '훈연향 계열로 바디감이 좋으며 혈액순환을 도우며, 영적치유, 살균 효능이 있습니다.',
                     },
-                    'memo': [
+                    'memos': [
                         {
                             'id': 1,
                             'detail': '삼겹살 먹어서 기분 짱좋음',

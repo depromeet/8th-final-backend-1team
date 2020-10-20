@@ -1,0 +1,49 @@
+'/recommendations':
+  get:
+    tags:
+      - Recommendation
+    summary: 'get recommendations api'
+    security:
+      - bearerAuth: []
+    description: '추천 정보를 가져오는 api'
+    parameters:
+      - in: query
+        name: tag
+        schema:
+          type: array
+          items:
+            type: integer
+        required: true
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    recommendations:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          tags:
+                            type: array
+                            items:
+                              "$ref": "#/components/schemas/Tag"
+                          incense:
+                            "$ref": "#/components/schemas/Incense"
+                          music:
+                            "$ref": "#/components/schemas/Music"
+                          video:
+                            "$ref": "#/components/schemas/Video"
+
+      500:
+        $ref: '#/components/responses/500'
