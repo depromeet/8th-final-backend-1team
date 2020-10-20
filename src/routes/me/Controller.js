@@ -25,8 +25,10 @@ export const putMe = async (req, res, next) => {
         // logger.info(`putMe request success`);
 
         return res.status(200).json(new ApiResponse({
+            'id': '1',
             'nickname': '오겹살',
             'profileUrl': 'https://xxx.xxx.xxx/xxxx.jpg',
+            'provider': 'kakao',
         }));
     } catch (e) {
         next(e);
