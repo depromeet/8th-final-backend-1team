@@ -16,6 +16,11 @@ export const getIncense = async (req, res, next) => {
                     'title': 'Nag Champa',
                     'detail': '훈연향 계열로 바디감이 좋으며 혈액순환을 도우며, 영적치유, 살균 효능이 있습니다.',
                 },
+                {
+                    'id': 2,
+                    'title': 'It;s Incense2',
+                    'detail': '이거 향 맞으니까 일단 쓰자,
+                },
             ],
         }));
     } catch (e) {
