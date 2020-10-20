@@ -1,0 +1,35 @@
+'/histories/{historyId}/memos/{memoId}':
+  delete:
+    tags:
+      - History
+    summary: 'memo 삭제 api'
+    security:
+      - bearerAuth: []
+    description: 'memo 를 삭제한다.'
+    parameters:
+      - name: historyId
+        description: 'history id'
+        in: path
+        type: 'integer'
+        required: true
+      - name: memoId
+        description: 'memo id'
+        in: path
+        type: 'integer'
+        required: true
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+      500:
+        $ref: '#/components/responses/500'

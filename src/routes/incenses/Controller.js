@@ -19,7 +19,7 @@ export const getIncense = async (req, res, next) => {
                 {
                     'id': 2,
                     'title': 'It;s Incense2',
-                    'detail': '이거 향 맞으니까 일단 쓰자,
+                    'detail': '이거 향 맞으니까 일단 쓰자',
                 },
             ],
         }));

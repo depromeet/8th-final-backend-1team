@@ -37,7 +37,8 @@ export const kakaoLoginMiddlewrae = async (req, res, next) => {
 
 export const appleLoginMiddleware = async (req, res, next) => {
     try {
-        logger.info(`get user info by apple { "token": "${req.body.code}" }`);
+        const code = req.body.token;
+        logger.info(`get user info by apple { "token": "${code}" }`);
 
         const appleJwtClaims = {
             iss: config.auth.apple.teamId,
@@ -57,7 +58,7 @@ export const appleLoginMiddleware = async (req, res, next) => {
         const appleLoginBody = {
             'client_id': config.auth.apple.clientId,
             'client_secret': appleClientSecret,
-            'code': req.body.code,
+            'code': code,
             'grant_type': 'authorization_code',
         };
         const appleBodyString = stringify(appleLoginBody);

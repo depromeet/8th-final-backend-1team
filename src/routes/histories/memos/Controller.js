@@ -1,5 +1,4 @@
 import {moduleLogger} from '@src/logger';
-import {objectToString} from '@src/util/conversion';
 import {ApiResponse} from '@src/model/api/ApiResponse';
 
 const logger = moduleLogger('MemoController');

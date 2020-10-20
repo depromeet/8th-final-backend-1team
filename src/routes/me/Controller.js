@@ -10,8 +10,10 @@ export const getMe = async (req, res, next) => {
         // logger.info(`getMe request success`);
 
         return res.status(200).json(new ApiResponse({
+            'id': 1,
             'nickname': '삼겹살',
-            'profileUrl': 'https://xxx.xxx.xxx/xxxx.jpg',
+            'profileUrl': 'https://avatars3.githubusercontent.com/u/18240792?s=400&u=12f0b35a5ebcaf14e0cf8fa37665174720814593&v=4',
+            'provider': 'kakao',
         }));
     } catch (e) {
         next(e);
@@ -25,9 +27,9 @@ export const putMe = async (req, res, next) => {
         // logger.info(`putMe request success`);
 
         return res.status(200).json(new ApiResponse({
-            'id': '1',
+            'id': 1,
             'nickname': '오겹살',
-            'profileUrl': 'https://xxx.xxx.xxx/xxxx.jpg',
+            'profileUrl': 'https://avatars3.githubusercontent.com/u/18240792?s=400&u=12f0b35a5ebcaf14e0cf8fa37665174720814593&v=4',
             'provider': 'kakao',
         }));
     } catch (e) {

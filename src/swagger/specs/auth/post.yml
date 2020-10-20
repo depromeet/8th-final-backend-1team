@@ -1,7 +1,7 @@
-'/v1/auth/signin/kakao':
+'/auth/kakao/signin':
   post:
     tags:
-      - auth
+      - Auth
     summary: '카카오 로그인 API'
     description: '서비스에 로그인하는 API 입니다.'
     requestBody:
@@ -38,10 +38,10 @@
       500:
         $ref: '#/components/responses/500'
 
-'/v1/auth/signin/apple':
+'/auth/apple/signin':
   post:
     tags:
-      - auth
+      - Auth
     summary: '애플 로그인 API'
     description: '서비스에 로그인하는 API 입니다.'
     requestBody:
@@ -51,9 +51,9 @@
           schema:
             type: object
             required:
-              - code
+              - token
             properties:
-              code:
+              token:
                 type: 'string'
                 description: '애플 로그인 후 받는 authorized code'
     responses:

@@ -38,7 +38,7 @@ app.get('/ping', (req, res, next) => {
     return res.status(200).end('pong');
 });
 
-app.use('/v1', v1Router);
+app.use('/api/v1', v1Router);
 
 if (process.env.NODE_ENV !== 'production') {
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));

@@ -12,7 +12,7 @@ router.put(
     Controller.putMemo);
 
 router.delete(
-    '/',
+    '/:memoId',
     Controller.deleteMemo);
 
 export default router;

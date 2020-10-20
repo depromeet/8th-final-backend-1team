@@ -57,7 +57,7 @@ export const getRecommendation = async (req, res, next) => {
                     ],
                     'incense': {
                         'id': 2,
-                        'title': 'It's Incense2',
+                        'title': 'Its Incense2',
                         'image': 'https://kscory.com/assets/hyperledger/network-1/hyperledger-network1_structure.png',
                         'detail': '이거 향 맞음',
                     },

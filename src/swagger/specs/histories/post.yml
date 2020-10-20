@@ -1,0 +1,46 @@
+'/histories':
+  post:
+    tags:
+      - History
+    summary: 'history 생성 api'
+    security:
+      - bearerAuth: []
+    description: '추천된 향, 음악 등을 재생시킨 기록을 남기는 api'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - tagIds
+              - incenseId
+              - playTime
+            properties:
+              tagIds:
+                type: array
+                items:
+                  type: integer
+              incenseId:
+                type: integer
+              playTime:
+                type: integer
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    historyId:
+                      type: integer
+      500:
+        $ref: '#/components/responses/500'
