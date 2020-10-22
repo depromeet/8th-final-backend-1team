@@ -44,7 +44,7 @@ export const init = (sequelize) =>
                 field: 'created_at',
                 type: 'TIMESTAMP',
                 allowNull: false,
-                defaultValue: sequelize.NOW,
+                defaultValue: DataTypes.NOW,
             },
         },
         {
@@ -57,7 +57,8 @@ export const init = (sequelize) =>
 
 export const associate = () => {
     History.hasMany(Memo, {
-        onDelete: 'CASECADE',
+        targetKey: 'id',
+        foreignKey: 'history_id',
     });
     History.belongsToMany(Tag, {
         through: History_Tag,

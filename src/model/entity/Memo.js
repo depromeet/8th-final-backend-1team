@@ -34,12 +34,13 @@ export const init = (sequelize) =>
             field: 'created_at',
             type: 'TIMESTAMP',
             allowNull: false,
-            defaultValue: sequelize.NOW,
+            defaultValue: DataTypes.NOW,
         },
         updatedAt: {
             field: 'updated_at',
             type: 'TIMESTAMP',
             allowNull: false,
+            defaultValue: DataTypes.NOW,
         },
         historyId: {
             field: 'history_id',

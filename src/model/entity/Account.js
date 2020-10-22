@@ -35,12 +35,13 @@ export const init = (sequelize) =>
             field: 'created_at',
             type: 'TIMESTAMP',
             allowNull: false,
-            defaultValue: sequelize.NOW,
+            defaultValue: DataTypes.NOW,
         },
         updatedAt: {
             field: 'updated_at',
             type: 'TIMESTAMP',
             allowNull: false,
+            defaultValue: DataTypes.NOW,
         },
     },
     {
@@ -52,8 +53,12 @@ export const init = (sequelize) =>
 
 export const associate = () => {
     Account.hasOne(Provider, {
-        onDelete: 'CASECADE',
+        targetKey: 'id',
+        foreignKey: 'account_id',
     });
-    Account.hasMany(History);
+    Account.hasMany(History, {
+        targetKey: 'id',
+        foreignKey: 'account_id',
+    });
     return Account;
 };

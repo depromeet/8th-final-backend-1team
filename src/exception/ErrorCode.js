@@ -11,5 +11,8 @@ export const ERROR_CODE = {
     JWT_SIGN_FAILED: createErrorCode(500, 'G007', 'Failed to sign jwt', 'JWT_SIGN_FAILED'),
 
     // auth
-    OAUTH_FAILED: createErrorCode(400, 'A001', 'Failed to login with oauth', 'OAuth_FAILED'),
+    OAUTH_FAILED: createErrorCode(400, 'A001', 'Failed to login with oauth', 'OAUTH_FAILED'),
+
+    // user
+    USER_NOT_FOUND: createErrorCode(400, 'U001', 'cannot find user info', 'USER_NOT_FOUND'),
 };
