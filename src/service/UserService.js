@@ -6,7 +6,7 @@ import {UserNotFoundException} from '@src/exception/UserException';
 const logger = moduleLogger('UserService');
 
 export const getUserInfo = async ({userId}) => {
-    const userInfo = getUserInfoWithProvider({userId});
+    const userInfo = await getUserInfoWithProvider({userId});
     delete userInfo.provider;
     return userInfo;
 };

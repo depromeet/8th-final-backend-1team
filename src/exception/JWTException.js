@@ -6,3 +6,9 @@ export class JWTSignException extends BaseException {
         super(errorCode.httpStatus, errorCode.code, message || errorCode.message, errorCode.name);
     }
 }
+
+export class JWTExpiredException extends BaseException {
+    constructor(message, errorCode = ERROR_CODE.JWT_EXPIRED) {
+        super(errorCode.httpStatus, errorCode.code, message || errorCode.message, errorCode.name);
+    }
+}

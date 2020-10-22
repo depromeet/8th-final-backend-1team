@@ -13,7 +13,7 @@ export const signInWithProvider = async (providerInfo) => {
     if (accountInfo) {
         logger.info(`signInWithProvider success with existed account, { "accountInfo": ${objectToString(accountInfo)} }`);
         return {
-            jwt: await createJWT(accountInfo.uuid),
+            jwt: await createJWT(accountInfo.id),
             userCreated: false,
         };
     }
@@ -32,7 +32,7 @@ export const signInWithProvider = async (providerInfo) => {
     logger.info(`signInWithProvider success with new account, { "accountInfo": ${objectToString(savedAccount)}, "providerInfo": ${objectToString(savedProvider)}  } `);
 
     return {
-        jwt: await createJWT(savedAccount.uuid),
+        jwt: await createJWT(savedAccount.id),
         userCreated: true,
     };
 };
