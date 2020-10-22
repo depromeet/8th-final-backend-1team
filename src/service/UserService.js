@@ -28,3 +28,13 @@ export const getUserInfoWithProvider = async ({userId}) => {
         provider: accountInfo.Provider.providerName,
     };
 };
+
+export const updateUserInfo = async ({userId, nickname}) => {
+    logger.info(`getUserInfo start, { "userId": "${userId}", "nickname": "${nickname}" }`);
+    await AccountRepository.updateById({
+        id: userId,
+        nickname: nickname,
+    });
+
+    return getUserInfoWithProvider({userId});
+};

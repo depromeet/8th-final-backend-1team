@@ -26,3 +26,14 @@ export const findOneById = async (userId) => {
         },
     });
 };
+
+export const updateById = async ({id, nickname}) => {
+    return Account.update({
+        nickname: nickname,
+    },
+    {
+        where: {
+            id: {[Op.eq]: id},
+        },
+    });
+};
