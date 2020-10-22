@@ -30,12 +30,13 @@ export const init = (sequelize) =>
                 field: 'created_at',
                 type: 'TIMESTAMP',
                 allowNull: false,
-                defaultValue: sequelize.NOW,
+                defaultValue: DataTypes.NOW,
             },
             updatedAt: {
                 field: 'updated_at',
                 type: 'TIMESTAMP',
                 allowNull: false,
+                defaultValue: DataTypes.NOW,
             },
             contentLength: {
                 field: 'content_length',
@@ -52,7 +53,10 @@ export const init = (sequelize) =>
     );
 
 export const associate = () => {
-    Video.hasOne(Incense);
+    Video.hasOne(Incense, {
+        targetKey: 'id',
+        foreignKey: 'music_id',
+    });
 
     return Video;
 };

@@ -64,7 +64,10 @@ export const init = (sequelize) =>
     );
 
 export const associate = () => {
-    Incense.hasMany(History);
+    Incense.hasMany(History, {
+        targetKey: 'id',
+        foreignKey: 'incense_id',
+    });
     Incense.belongsTo(Music, {
         targetKey: 'id',
         foreignKey: 'music_id',

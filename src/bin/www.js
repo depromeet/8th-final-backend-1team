@@ -8,6 +8,7 @@ import {objectToString} from '@src/util/conversion';
 const logger = moduleLogger('www');
 sequelize
     .authenticate()
+    // .sync()
     .then(() => {
         app.listen(config.server.port, () => {
             logger.info(`${config.server.name} is running with port: ${config.server.port}`);

@@ -52,7 +52,10 @@ export const init = (sequelize) =>
     );
 
 export const associate = () => {
-    Music.hasOne(Incense);
+    Music.hasOne(Incense, {
+        targetKey: 'id',
+        foreignKey: 'music_id',
+    });
 
     return Music;
 };

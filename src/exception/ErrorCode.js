@@ -9,7 +9,11 @@ export const ERROR_CODE = {
     NOT_FOUND: createErrorCode(404, 'G005', 'Not Found', 'NOT_FOUND'),
     API_FAILED: createErrorCode(504, 'G006', 'Failed to call external api', 'API_FAILED'),
     JWT_SIGN_FAILED: createErrorCode(500, 'G007', 'Failed to sign jwt', 'JWT_SIGN_FAILED'),
+    JWT_EXPIRED: createErrorCode(401, 'G008', 'token expired', 'JWT_EXPIRED'),
 
     // auth
-    OAUTH_FAILED: createErrorCode(400, 'A001', 'Failed to login with oauth', 'OAuth_FAILED'),
+    OAUTH_FAILED: createErrorCode(400, 'A001', 'Failed to login with oauth', 'OAUTH_FAILED'),
+
+    // user
+    USER_NOT_FOUND: createErrorCode(400, 'U001', 'cannot find user info', 'USER_NOT_FOUND'),
 };
