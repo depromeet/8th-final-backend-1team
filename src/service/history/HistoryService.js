@@ -33,3 +33,28 @@ export const postHistory = async (historyInfo) => {
         historyId: savedHistory.id,
     };
 };
+
+export const getHistory = async (accountId) => {
+    logger.debug(`getHistory start, { "accountId": ${accountId} }`);
+
+    const histories = await HistoryRepository.getHistory(accountId);
+
+    if (!histories) {
+        logger.error(`cannot find history info with accountId, { "accountId": "${accountId}" }`);
+        throw new NotFoundException();
+    }
+
+    logger.info(`getHistory success, { "historyInfo": ${objectToString(histories)} }`);
+
+    return histories;
+};
+
+export const deleteHistory = async (historyId) => {
+    logger.debug(`deleteHistory start, { "historyId": ${objectToString(historyId)} }`);
+
+    await HistoryRepository.deleteHistory({
+        historyId,
+    });
+
+    logger.info(`deleteHistory success}`);
+};
