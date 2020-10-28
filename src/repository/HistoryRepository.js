@@ -40,6 +40,8 @@ export const getHistory = async (accountId) => {
 
 export const deleteHistory = async (historyId) => {
     await History.destroy({
-        where: {id: historyId},
+        where: {
+            id: {[Op.eq]: historyId},
+        },
     });
 };

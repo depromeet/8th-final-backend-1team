@@ -52,9 +52,7 @@ export const getHistory = async (accountId) => {
 export const deleteHistory = async (historyId) => {
     logger.debug(`deleteHistory start, { "historyId": ${objectToString(historyId)} }`);
 
-    await HistoryRepository.deleteHistory({
-        historyId,
-    });
+    await HistoryRepository.deleteHistory(historyId);
 
     logger.info(`deleteHistory success}`);
 };

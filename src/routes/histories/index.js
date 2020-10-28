@@ -4,14 +4,14 @@ import memoRouter from './memos';
 
 import {validateParamMiddleware} from '@src/middleware/request-validate-middleware';
 import {
-    HistoryRequest,
+    PostHistoryBodyParameter,
 } from '@src/routes/histories/dto/HistoryRequest';
 
 const router = new Router();
 
 router.post(
     '/',
-    validateParamMiddleware(HistoryRequest),
+    validateParamMiddleware(PostHistoryBodyParameter, null, null),
     Controller.postHistory);
 
 router.get(
