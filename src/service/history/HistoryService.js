@@ -2,7 +2,7 @@ import {moduleLogger} from '@src/logger';
 import {objectToString} from '@src/util/conversion';
 import {sequelize} from '@src/database/Sequelize';
 import * as HistoryRepository from '@src/repository/HistoryRepository';
-import * as HistoryTagRepository from '@src/repository/HistoryTagRepository';
+import * as HistoryAndTagRepository from '@src/repository/HistoryAndTagRepository';
 
 const logger = moduleLogger('HistoryService');
 
@@ -20,7 +20,7 @@ export const postHistory = async (historyInfo) => {
 
     const tagIds = historyInfo.tagIds;
     tagIds.map(async (tagId) => {
-        await HistoryTagRepository.saveHistoryTag({
+        await HistoryAndTagRepository.saveHistoryAndTag({
             historyId: savedHistory.id,
             tagId,
         });
@@ -44,7 +44,7 @@ export const getHistory = async (accountId) => {
         throw new NotFoundException();
     }
 
-    logger.info(`getHistory success, { "historyInfo": ${objectToString(histories)} }`);
+    logger.info(`getHistory success, { "count of histories": ${histories.length} }`);
 
     return histories;
 };

@@ -1,4 +1,4 @@
-import {IsInt, IsArray} from 'class-validator';
+import {IsInt, IsNumberString} from 'class-validator';
 
 export class PostHistoryBodyParameter {
     // @IsArray({
@@ -16,9 +16,9 @@ export class PostHistoryBodyParameter {
 }
 
 export class DeleteHistoryPathParameter {
-    @IsInt({
+    @IsNumberString({
         message: 'invalid historyId parameter',
     })
-    istoryId;
+    historyId;
 }
 

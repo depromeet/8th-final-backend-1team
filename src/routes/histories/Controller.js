@@ -50,12 +50,12 @@ export const deleteHistory = async (req, res, next) => {
 
     const {historyId} = req.params;
 
-    logger.info(`postHistory request, { "historyId": ${objectToString(historyId)} }`);
+    logger.info(`deleteHistory request, { "historyId": ${objectToString(historyId)} }`);
 
     try {
         await HistoryService.deleteHistory(historyId);
 
-        logger.info(`postHisotry request success`);
+        logger.info(`deleteHisotry request success`);
 
         return res.status(200).json(new ApiResponse({}));
     } catch (e) {
