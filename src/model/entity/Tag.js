@@ -3,6 +3,7 @@ import {moduleLogger} from '@src/logger';
 import {config} from '@src/config';
 import {History_Tag} from './History_Tag';
 import {History} from '@src/model/entity/History';
+import {Category} from '@src/model/entity/Category';
 
 const logger = moduleLogger('Tag');
 
@@ -32,6 +33,11 @@ export const init = (sequelize) =>
                 type: DataTypes.FLOAT,
                 defaultValue: 0,
             },
+            categoryId: {
+                field: 'categoryId',
+                type: DataTypes.BIGINT,
+                allowNull: false,
+            },
         },
         {
             sequelize,
@@ -45,6 +51,10 @@ export const associate = () => {
     Tag.belongsToMany(History, {
         through: History_Tag,
         foreignKey: 'tag_id',
+    });
+    Tag.belongsTo(Category, {
+        targetKey: 'id',
+        foreignKey: 'categoryId',
     });
 
     return Tag;

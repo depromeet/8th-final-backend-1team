@@ -4,6 +4,7 @@ import {config} from '@src/config';
 import {History} from './History';
 import {Video} from '@src/model/entity/Video';
 import {Music} from '@src/model/entity/Music';
+import {Category} from '@src/model/entity/Category';
 
 const logger = moduleLogger('Incense');
 
@@ -54,6 +55,11 @@ export const init = (sequelize) =>
                 type: DataTypes.BIGINT,
                 allowNull: false,
             },
+            categoryId: {
+                field: 'categoryId',
+                type: DataTypes.BIGINT,
+                allowNull: false,
+            },
         },
         {
             sequelize,
@@ -75,6 +81,10 @@ export const associate = () => {
     Incense.belongsTo(Video, {
         targetKey: 'id',
         foreignKey: 'video_id',
+    });
+    Incense.belongsTo(Category, {
+        targetKey: 'id',
+        foreignKey: 'categoryId',
     });
 
     return Incense;
