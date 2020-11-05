@@ -82,7 +82,7 @@ jobs:
       id: download-task-def
       run: |
         cd $GITHUB_WORKSPACE
-        aws ecs decsribe-task-definition --task-definition fragraph --query taskDefinition > task-definition.json
+        aws ecs describe-task-definition --task-definition fragraph --query taskDefinition > task-definition.json
         echo "::set-output name=task-def-file-path::$GITHUB_WORKSPACE/task-definition.json"
  
     - name: Fill in the new image ID in the Amazon ECS task definition
