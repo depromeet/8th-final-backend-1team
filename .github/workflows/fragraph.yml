@@ -98,7 +98,7 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: fragraph
-        cluster: fragraph
+        cluster: aws-fargate-application-autoscaling-fargateserviceautoscalingD107CF93-vTlDFyowdAv2
         wait-for-service-stability: true
 
     - name: Create Release
