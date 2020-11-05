@@ -26,7 +26,12 @@ export const postMemo = async ({historyId, detail}) => {
 export const updateMemo = async ({historyId, memoId, detail}) => {
     logger.debug(`putMemo start, { "historyId": ${historyId}, "memoId": ${memoId}, "detail": ${detail} }`);
 
-    await MemoRepository.updateMemo({historyId, memoId, detail});
+    await MemoRepository.updateMemo({
+        historyId,
+        memoId,
+        detail,
+        updatedAt: sequelize.literal('CURRENT_TIMESTAMP'),
+    });
 
     logger.info(`putMemo success, { "memoId": ${memoId} }`);
 

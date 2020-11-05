@@ -21,9 +21,10 @@ export const saveMemo = async ({
     return memo.dataValues;
 };
 
-export const updateMemo = async ({historyId, memoId, detail}) => {
+export const updateMemo = async ({historyId, memoId, detail, updatedAt}) => {
     return Memo.update({
         detail: detail,
+        updatedAt: updatedAt,
     },
     {
         where: {
