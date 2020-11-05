@@ -78,29 +78,6 @@ jobs:
         echo "::set-output name=version::$VERSION"
         echo "::set-output name=git-commit-msg::$GIT_COMMIT_MSG"
 
-    - name: Download task definition
-      id: download-task-def
-      run: |
-        cd $GITHUB_WORKSPACE
-        aws ecs describe-task-definition --task-definition fragraph --query taskDefinition > task-definition.json
-        echo "::set-output name=task-def-file-path::$GITHUB_WORKSPACE/task-definition.json"
- 
-    - name: Fill in the new image ID in the Amazon ECS task definition
-      id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
-      with:
-        task-definition: ${{ steps.download-task-def.outputs.task-def-file-path }}
-        container-name: web
-        image: ${{ steps.build-image.outputs.image }}
-
-    - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-      with:
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: fragraph
-        cluster: aws-fargate-application-autoscaling-fargateserviceautoscalingD107CF93-vTlDFyowdAv2
-        wait-for-service-stability: true
-
     - name: Create Release
       id: create-release
       uses: actions/create-release@v1
