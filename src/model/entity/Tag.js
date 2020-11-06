@@ -34,7 +34,7 @@ export const init = (sequelize) =>
                 defaultValue: 0,
             },
             categoryId: {
-                field: 'categoryId',
+                field: 'category_id',
                 type: DataTypes.BIGINT,
                 allowNull: false,
             },
@@ -54,7 +54,7 @@ export const associate = () => {
     });
     Tag.belongsTo(Category, {
         targetKey: 'id',
-        foreignKey: 'categoryId',
+        foreignKey: 'category_id',
     });
 
     return Tag;

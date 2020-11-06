@@ -5,6 +5,6 @@ const router = new Router();
 
 router.get(
     '/',
-    Controller.getRecommendation);
+    Controller.getRecommendations);
 
 export default router;

@@ -36,11 +36,11 @@ export const init = (sequelize) =>
 export const associate = () => {
     Category.hasOne(Tag, {
         targetKey: 'id',
-        foreignKey: 'categoryId',
+        foreignKey: 'category_id',
     });
     Category.hasOne(Incense, {
         targetKey: 'id',
-        foreignKey: 'categoryId',
+        foreignKey: 'category_id',
     });
 
     return Category;

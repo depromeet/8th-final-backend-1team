@@ -56,7 +56,7 @@ export const init = (sequelize) =>
                 allowNull: false,
             },
             categoryId: {
-                field: 'categoryId',
+                field: 'category_id',
                 type: DataTypes.BIGINT,
                 allowNull: false,
             },
@@ -84,7 +84,7 @@ export const associate = () => {
     });
     Incense.belongsTo(Category, {
         targetKey: 'id',
-        foreignKey: 'categoryId',
+        foreignKey: 'category_id',
     });
 
     return Incense;
