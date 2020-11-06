@@ -1,0 +1,5 @@
+# local test 시 환경변수 여기에 적용
+DB_DEFAULT_USERNAME=postgres
+DB_DEFAULT_PASSWORD=rootdepromeet
+DB_DEFAULT_HOST=depromeet-8th-final-d.chim5cqivjhd.us-east-1.rds.amazonaws.com
+DB_DEFAULT_LOGGING=true
