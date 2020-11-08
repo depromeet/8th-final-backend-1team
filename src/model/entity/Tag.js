@@ -44,6 +44,7 @@ export const init = (sequelize) =>
 export const associate = () => {
     Tag.belongsToMany(History, {
         through: History_Tag,
+        foreignKey: 'tag_id',
     });
 
     return Tag;

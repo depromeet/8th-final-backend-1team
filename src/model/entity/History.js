@@ -62,6 +62,7 @@ export const associate = () => {
     });
     History.belongsToMany(Tag, {
         through: History_Tag,
+        foreignKey: 'history_id',
     });
     History.belongsTo(Incense, {
         targetKey: 'id',
