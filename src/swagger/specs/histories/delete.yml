@@ -1,0 +1,30 @@
+'/histories/{historyId}':
+  delete:
+    tags:
+      - History
+    summary: 'history 삭제 api'
+    security:
+      - bearerAuth: []
+    description: 'history 삭제하는 api'
+    parameters:
+      - name: historyId
+        description: 'history id'
+        in: path
+        type: 'integer'
+        required: true
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+      500:
+        $ref: '#/components/responses/500'

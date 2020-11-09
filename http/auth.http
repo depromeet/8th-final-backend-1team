@@ -1,17 +1,17 @@
 ### SignIn With Kakao
-POST http://localhost:31923/v1/auth/signin/kakao
+POST http://localhost:31923/api/v1/auth/kakao/signin
 Content-Type: application/json
 
 {
-  "token": "NY1B-lrQye9qn5DJAtjTSkpPWz47SPAhCa6xXwo9c04AAAF0qnr-jg"
+  "token": "IlShRL8_aoAau9va-rTVaHnKlNVtUc9F6-YN_AorDR8AAAF1UCQ3bw"
 }
 
 ### SignIn With Apple
-POST http://localhost:31923/v1/auth/signin/apple
+POST http://localhost:31923/api/v1/auth/apple/signin
 Content-Type: application/json
 
 {
-  "code": "kh8RiIwrDb3Jah4Xfg1IFeAOS6ZKUG7MecZYoQo9dNkAAAF0pXODlg"
+  "token": "kh8RiIwrDb3Jah4Xfg1IFeAOS6ZKUG7MecZYoQo9dNkAAAF0pXODlg"
 }
 
 ###

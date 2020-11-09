@@ -1,8 +1,11 @@
-import * as _ from 'fxjs/Strict';
-import {sign} from 'jsonwebtoken';
+import {sign, TokenExpiredError, verify} from 'jsonwebtoken';
 import {config} from '@src/config';
-import {JWTSignException} from '@src/exception/JWTSignException';
+import {
+    JWTExpiredException,
+    JWTSignException,
+} from '@src/exception/JWTException';
 import {moduleLogger} from '@src/logger';
+import {UnauthorizedException} from '@src/exception/CommonException';
 
 const logger = moduleLogger('JwtUtil');
 
@@ -36,4 +39,21 @@ export const createJWT = async (accountId) => {
         logger.error(`failed to sign jwt token, error: ${e.message}`);
         throw new JWTSignException();
     }
+};
+
+export const verifyJWT = (token) => {
+    return new Promise((resolve, reject) => {
+        verify(token, config.jwt.secret || 'jwtSecretKey', (err, payload) => {
+            if (err) {
+                if (err instanceof TokenExpiredError) {
+                    reject(new JWTExpiredException());
+                }
+
+                logger.error(`failed to verify jwt`);
+                reject(new UnauthorizedException());
+            } else {
+                resolve(payload);
+            }
+        });
+    });
 };

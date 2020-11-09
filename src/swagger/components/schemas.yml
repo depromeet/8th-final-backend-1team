@@ -1,0 +1,55 @@
+Tag:
+  type: object
+  properties:
+    id:
+      type: integer
+    name:
+      type: string
+    weight:
+      type: number
+  xml:
+    name: Tag
+
+Incense:
+  type: object
+  properties:
+    id:
+      type: integer
+    title:
+      type: string
+    detail:
+      type: Incense
+  xml:
+    name: Incense
+
+Music:
+  type: object
+  properties:
+    id:
+      type: integer
+    url:
+      type: string
+    contentLength:
+      type: integer
+  xml:
+    name: Music
+
+Video:
+  type: object
+  properties:
+    id:
+      type: integer
+    url:
+      type: string
+  xml:
+    name: Video
+
+Memo:
+  type: object
+  properties:
+    id:
+      type: integer
+    detail:
+      type: string
+  xml:
+    name: Memo

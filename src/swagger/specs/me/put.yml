@@ -1,0 +1,45 @@
+'/me':
+  put:
+    tags:
+      - Me
+    summary: '내 정보 변경'
+    security:
+      - bearerAuth: []
+    description: '내 정보 변경 API'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - nickname
+            properties:
+              nickname:
+                type: 'string'
+                description: '유저 닉네임'
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    nickname:
+                      type: string
+                    profileUrl:
+                      type: string
+                    provider:
+                      type: string
+      500:
+        $ref: '#/components/responses/500'

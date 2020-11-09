@@ -11,6 +11,9 @@ const sequelize = new Sequelize({
     dialect: config.db.default.dialect,
     // dialect: 'sqlite',
     // storage: 'memory',
+    // sync: {
+    //     force: true,
+    // },
     database: config.db.default.database,
     username: config.db.default.username,
     password: config.db.default.password,
@@ -30,13 +33,16 @@ const sequelize = new Sequelize({
 const modelPath = `${__dirname}/../model/entity/`;
 _.go(
     fs.readdirSync(modelPath),
-    _.map((file) => {
-        const model = require(path.join(modelPath, file));
-        model.init(sequelize);
+    _.map((file) => require(path.join(modelPath, file))),
+    _.map((model) => {
+        model.init ? model.init(sequelize) : model;
         return model;
     }),
-    _.filter((model) => !!model.associate),
-    _.map((model) => model.associate()),
+    _.map((model) => {
+        model.link ? model.link(sequelize) : model;
+        return model;
+    }),
+    _.map((model) => model.associate ? model.associate() : model),
 );
 
 export {

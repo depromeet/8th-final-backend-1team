@@ -4,6 +4,7 @@ import _ from 'lodash';
 import YAML from 'yamljs';
 
 const responsesPath = path.join(__dirname, './responses.yml');
+const schemasPath = path.join(__dirname, './schemas.yml');
 
 export default _.merge(
     {
@@ -16,4 +17,5 @@ export default _.merge(
         },
     },
     {responses: YAML.load(responsesPath)},
+    {schemas: YAML.load(schemasPath)},
 );
