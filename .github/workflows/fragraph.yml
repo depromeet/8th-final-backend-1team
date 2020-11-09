@@ -90,7 +90,7 @@ jobs:
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
         task-definition: ${{ steps.download-task-def.outputs.task-def-file-path }}
-        container-name: web
+        container-name: fragraph
         image: ${{ steps.build-image.outputs.image }}
 
     - name: Deploy Amazon ECS task definition
@@ -98,7 +98,7 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: fragraph
-        cluster: aws-fargate-application-autoscaling-fargateserviceautoscalingD107CF93-vTlDFyowdAv2
+        cluster: fragraph-cluster
         wait-for-service-stability: true
    
     - name: Create Release
