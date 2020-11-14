@@ -23,14 +23,16 @@ export const saveHistory = async ({
 
 export const getHistory = async (accountId) => {
     return await History.findAll({
-        include: [{
-            model: Incense,
-            attributes: ['id', 'name', 'image', 'detail'],
-        },
-        {
-            model: Memo,
-            attributes: ['id', 'title', 'detail'],
-        }],
+        include: [
+            {
+                model: Incense,
+                attributes: ['id', 'name', 'image', 'detail'],
+            },
+            {
+                model: Memo,
+                attributes: ['id', 'title', 'detail'],
+            },
+        ],
         where: {
             accountId: {[Op.eq]: accountId},
         },

@@ -12,7 +12,8 @@ export const getRecommendations = async (tagIds) => {
 
     const Tags = await TagRepository.getTag(tagIds);
     const maxWeightSumCategoryId = await TagRepository.getRecommendationCategoryId(tagIds);
-    const recommendations = await IncenseRepository.getRecommendations(maxWeightSumCategoryId[0].category_id);
+    const bestRecommendationIds = [maxWeightSumCategoryId[0].category_id, maxWeightSumCategoryId[1].category_id];
+    const recommendations = await IncenseRepository.getRecommendations(bestRecommendationIds);
 
     if (!recommendations) {
         logger.error(`cannot find recommendations info with tagIds, { "tagIds": "${tagIds}" }`);

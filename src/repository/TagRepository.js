@@ -6,7 +6,8 @@ import {Tag} from '@src/model/entity/Tag';
 const logger = moduleLogger('TagRepository');
 
 export const getTags = async () => {
-    return await Tag.findAll();
+    return await Tag.findAll({
+    });
 };
 
 export const getTag = async (tagIds) => {
@@ -24,7 +25,7 @@ export const getRecommendationCategoryId = async (tagIds) => {
             'category_id',
             [sequelize.fn('sum', sequelize.col('weight')), 'weight_sum'],
         ],
-        limit: 1,
+        limit: 2,
         order: [sequelize.literal('weight_sum DESC')],
         group: 'category_id',
         where: {

@@ -29,7 +29,7 @@ export const saveIncense = async ({
 };
 
 export const getRecommendations = async (tagIds) => {
-    return await Incense.findOne({
+    return await Incense.findAll({
         attributes: ['id', 'name', 'image', 'detail'],
         include: [{
             model: Music,
@@ -40,7 +40,8 @@ export const getRecommendations = async (tagIds) => {
             attributes: ['id', 'url'],
         }],
         where: {
-            id: {[Op.eq]: `${tagIds}`},
+            id: {[Op.in]: tagIds},
         },
+        raw: true,
     });
 };
