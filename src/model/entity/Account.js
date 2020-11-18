@@ -33,29 +33,32 @@ export const init = (sequelize) =>
         },
         createdAt: {
             field: 'created_at',
-            type: DataTypes.DATE,
+            type: 'TIMESTAMP',
             allowNull: false,
+            defaultValue: DataTypes.NOW,
         },
         updatedAt: {
             field: 'updated_at',
-            type: DataTypes.DATE,
+            type: 'TIMESTAMP',
             allowNull: false,
+            defaultValue: DataTypes.NOW,
         },
-    }, {
+    },
+    {
         sequelize,
         tableName: 't_account',
         timestamps: false,
         schema: config.db.default.schema,
     });
 
-Account.associate = () => {
-    Account.hasOne(Provider);
-    Account.hasOne(History);
+export const associate = () => {
+    Account.hasOne(Provider, {
+        targetKey: 'id',
+        foreignKey: 'account_id',
+    });
+    Account.hasMany(History, {
+        targetKey: 'id',
+        foreignKey: 'account_id',
+    });
+    return Account;
 };
-// export const associate = () => {
-//     logger.debug('Sample2 associate success');
-//     Sample2.belongsTo(Sample, {
-//         foreignKey: 'sample1',
-//         targetKey: 'seq',
-//     });
-// };

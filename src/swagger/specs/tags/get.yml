@@ -1,0 +1,27 @@
+'/tags':
+  get:
+    tags:
+      - Tag
+    summary: 'get tag api'
+    description: 'tag 정보를 가져오는 api'
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    tags:
+                      type: array
+                      items:
+                        "$ref": "#/components/schemas/Tag"
+      500:
+        $ref: '#/components/responses/500'

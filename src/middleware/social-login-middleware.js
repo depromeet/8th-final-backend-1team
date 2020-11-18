@@ -16,10 +16,10 @@ export const kakaoLoginMiddlewrae = async (req, res, next) => {
 
         const {data} = await axios.get(`https://kapi.kakao.com/v2/user/me`, {
             headers: {Authorization: `Bearer ${req.body.token}`},
-        });
+        }).catch((e) => logger.error(`failed to login by kakao { error: ${e.message}`));
 
         if (!data || !data.id || !data.properties || !data.properties.nickname) {
-            throw new OAuthFailedException('failed to login with kakao');
+            throw new OAuthFailedException('failed to login with kakao, please check your token');
         }
 
         req.oauthProvider = {
@@ -37,7 +37,8 @@ export const kakaoLoginMiddlewrae = async (req, res, next) => {
 
 export const appleLoginMiddleware = async (req, res, next) => {
     try {
-        logger.info(`get user info by apple { "token": "${req.body.code}" }`);
+        const code = req.body.token;
+        logger.info(`get user info by apple { "token": "${code}" }`);
 
         const appleJwtClaims = {
             iss: config.auth.apple.teamId,
@@ -57,7 +58,7 @@ export const appleLoginMiddleware = async (req, res, next) => {
         const appleLoginBody = {
             'client_id': config.auth.apple.clientId,
             'client_secret': appleClientSecret,
-            'code': req.body.code,
+            'code': code,
             'grant_type': 'authorization_code',
         };
         const appleBodyString = stringify(appleLoginBody);
@@ -69,10 +70,10 @@ export const appleLoginMiddleware = async (req, res, next) => {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-            });
+            }).catch((e) => logger.error(`failed to login by apple { error: ${e.message}`));
 
         if (!data || !data.id_token) {
-            throw new OAuthFailedException('failed to login with apple');
+            throw new OAuthFailedException('failed to login with apple, please check your authorized code');
         }
 
         const appleTokenClaims = decode(data.id_token);

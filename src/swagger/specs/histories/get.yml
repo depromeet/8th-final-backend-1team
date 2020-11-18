@@ -1,0 +1,44 @@
+'/histories':
+  get:
+    tags:
+      - History
+    summary: 'get histories api'
+    security:
+      - bearerAuth: []
+    description: '히스토리 정보를 가져오는 api'
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    lastId:
+                      type: integer
+                    histories:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          createdAt:
+                            type: string
+                          playTime:
+                            type: integer
+                          incense:
+                            "$ref": "#/components/schemas/Incense"
+                          memos:
+                            type: array
+                            items:
+                              "$ref": "#/components/schemas/Incense"
+      500:
+        $ref: '#/components/responses/500'

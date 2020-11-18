@@ -1,18 +1,18 @@
 {
-  "name": "aroma-server",
+  "name": "fragraph-server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "NODE_ENV=test nyc --require @babel/register --require @babel/polyfill mocha test/**/*.js --timeout 5000 -w",
+    "test": "cross-env NODE_ENV=test nyc --require @babel/register --require @babel/polyfill mocha test/**/*.js --timeout 5000 -w",
     "prebuild": "rm -rf dist",
     "build": "babel src --out-dir dist --copy-files",
     "start": "node dist/bin/www.js",
     "prestart:local": "cp ./.env.local ./.env",
-    "start:local": "NODE_ENV=development nodemon --exec babel-node src/bin/www.js --ignore 'test'",
-    "start:dev": "NODE_ENV=development node dist/bin/www.js",
-    "start:stage": "NODE_ENV=stage node dist/bin/www.js",
-    "start:prod": "NODE_ENV=production node dist/bin/www.js"
+    "start:local": "cross-env NODE_ENV=development nodemon --exec babel-node src/bin/www.js --ignore 'test'",
+    "start:dev": "cross-env NODE_ENV=development node dist/bin/www.js",
+    "start:stage": "cross-env NODE_ENV=stage node dist/bin/www.js",
+    "start:prod": "cross-env NODE_ENV=production node dist/bin/www.js"
   },
   "dependencies": {
     "aws-sdk": "2.747.0",
@@ -63,6 +63,7 @@
     "@babel/register": "7.11.5",
     "babel-plugin-module-resolver": "4.0.0",
     "chai": "4.2.0",
+    "cross-env": "^7.0.2",
     "eslint": "7.8.1",
     "eslint-config-google": "0.14.0",
     "eslint-config-prettier": "6.11.0",

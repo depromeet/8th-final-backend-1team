@@ -1,31 +1,39 @@
 import {Op} from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {Account} from '@src/model/entity/Account';
+import {Provider} from '@src/model/entity/Provider';
 
 const logger = moduleLogger('AccountRepository');
 
-export const getAccountOneByProviderId = async (providerId) => {
+export const saveAccount = async ({
+    nickname,
+    profileImage,
+}) => {
+    const account = await Account.create({
+        nickname,
+        profileImage,
+    });
+    return account.dataValues;
+};
+
+export const findOneById = async (userId) => {
     return Account.findOne({
+        include: [{
+            model: Provider,
+        }],
         where: {
-            providerId: {[Op.eq]: providerId},
+            id: {[Op.eq]: userId},
         },
-        raw: true,
     });
 };
 
-export const saveAccount = async ({
-    uuid,
-    nickname,
-    profileUrl,
-    provider,
-    providerId,
-}) => {
-    const account = await Account.create({
-        uuid,
-        nickname,
-        profileUrl,
-        provider,
-        providerId,
+export const updateById = async ({id, nickname}) => {
+    return Account.update({
+        nickname: nickname,
+    },
+    {
+        where: {
+            id: {[Op.eq]: id},
+        },
     });
-    return account.dataValues;
 };

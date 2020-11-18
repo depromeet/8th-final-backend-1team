@@ -9,6 +9,7 @@ import swaggerSpecs from '@src/swagger';
 import {moduleLogger} from '@src/logger';
 import {handle404Error, handleError} from '@src/middleware/error-middleare';
 import {traceIdMiddleware} from '@src/middleware/tracerId-middleware';
+import {sequelize} from '@src/database/Sequelize';
 import v1Router from '@src/routes/v1';
 
 const logger = moduleLogger('App');
@@ -38,7 +39,16 @@ app.get('/ping', (req, res, next) => {
     return res.status(200).end('pong');
 });
 
-app.use('/v1', v1Router);
+/*
+sequelize.sync(
+    {force: true}, () => {
+        logger.info('DB connection is success');
+    });
+sequelize.sync(() => {
+    logger.info('DB connection is success');
+});*/
+
+app.use('/api/v1', v1Router);
 
 if (process.env.NODE_ENV !== 'production') {
     app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
