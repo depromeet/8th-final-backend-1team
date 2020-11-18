@@ -8,12 +8,12 @@ export const postMemo = async (req, res, next) => {
     logger.debug(`postMemo request start`);
 
     const {historyId} = req.params;
-    const {detail} = req.body;
+    const {title, detail} = req.body;
 
-    logger.info(`postMemo request, { "historyId": ${historyId}, "detail": ${detail} }`);
+    logger.info(`postMemo request, { "historyId": ${historyId}, "title": ${title}, "detail": ${detail} }`);
 
     try {
-        const {memoId} = await MemoService.postMemo({historyId, detail});
+        const {memoId} = await MemoService.postMemo({historyId, title, detail});
 
         logger.info(`postMemo request success`);
 

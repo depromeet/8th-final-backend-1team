@@ -19,8 +19,11 @@
           schema:
             type: object
             required:
+              - title
               - detail
             properties:
+              title:
+                type: string
               detail:
                 type: string
     responses:

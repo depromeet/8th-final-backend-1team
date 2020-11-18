@@ -5,11 +5,11 @@ import * as MemoRepository from '@src/repository/MemoRepository';
 
 const logger = moduleLogger('MemoService');
 
-export const postMemo = async ({historyId, detail}) => {
-    logger.debug(`postMemo start, { "historyId": ${historyId}, "detail": ${detail} }`);
+export const postMemo = async ({historyId, title, detail}) => {
+    logger.debug(`postMemo start, { "historyId": ${historyId}, "title": ${title}, "detail": ${detail} }`);
 
     const savedMemo = await MemoRepository.saveMemo({
-        title: 'title....?',
+        title: title,
         detail: detail,
         createdAt: sequelize.literal('CURRENT_TIMESTAMP'),
         updatedAt: sequelize.literal('CURRENT_TIMESTAMP'),
