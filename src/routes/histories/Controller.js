@@ -9,8 +9,7 @@ export const postHistory = async (req, res, next) => {
     logger.debug(`postHistory request start`);
 
     const historyInfo = req.body;
-    // historyInfo.accountId = req.accountId;
-    historyInfo.accountId = 1;
+    historyInfo.accountId = req.accountId;
 
     logger.info(`postHistory request, { "historyInfo": ${objectToString(historyInfo)} }`);
 
@@ -28,8 +27,7 @@ export const postHistory = async (req, res, next) => {
 export const getHistory = async (req, res, next) => {
     logger.debug(`getHistory request start`);
 
-    // const accountId = req.accountId;
-    const accountId = 1;
+    const accountId = req.accountId;
 
     logger.info(`getHistory request, { "accountId": ${accountId} }`);
 

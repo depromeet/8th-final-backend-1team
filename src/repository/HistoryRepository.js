@@ -34,7 +34,7 @@ export const getHistory = async (accountId) => {
         },
         {
             model: Tag,
-            attributes: ['name'],
+            attributes: ['id', 'name'],
             through: {
                 attributes: [],
             },
