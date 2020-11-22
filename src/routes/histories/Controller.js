@@ -1,3 +1,4 @@
+import fs from 'fs';
 import {moduleLogger} from '@src/logger';
 import {objectToString} from '@src/util/conversion';
 import * as HistoryService from '@src/service/history/HistoryService';
@@ -9,7 +10,8 @@ export const postHistory = async (req, res, next) => {
     logger.debug(`postHistory request start`);
 
     const historyInfo = req.body;
-    historyInfo.accountId = req.accountId;
+    // historyInfo.accountId = req.accountId;
+    historyInfo.accountId = 1;
 
     logger.info(`postHistory request, { "historyInfo": ${objectToString(historyInfo)} }`);
 
@@ -24,10 +26,37 @@ export const postHistory = async (req, res, next) => {
     }
 };
 
+export const postImage = async (req, res, next) => {
+    logger.debug(`postImage request start`);
+
+    const {historyId} = req.params;
+    const imageInfo = req.file;
+    const imageUrl = imageInfo.filename;
+
+    logger.info(`postImage request, { "historyId": ${historyId}, "imageInfo": ${objectToString(imageInfo)} }`);
+
+    try {
+        /*
+        if (!imageInfo) {
+            logger.error(`please select a file`);
+            throw new BaseException();
+        }
+        */
+        const historyInfo = await HistoryService.postImage({historyId, imageUrl});
+
+        logger.info(`postHisotry request success`);
+
+        return res.status(200).json(new ApiResponse(historyInfo));
+    } catch (e) {
+        next(e);
+    }
+};
+
 export const getHistory = async (req, res, next) => {
     logger.debug(`getHistory request start`);
 
-    const accountId = req.accountId;
+    // const accountId = req.accountId;
+    const accountId = 1;
 
     logger.info(`getHistory request, { "accountId": ${accountId} }`);
 

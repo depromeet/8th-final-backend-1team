@@ -22,6 +22,17 @@ export const saveHistory = async ({
     return history.dataValues;
 };
 
+export const saveImage = async ({historyId, imageUrl}) => {
+    await History.update({
+        image: imageUrl,
+    },
+    {
+        where: {
+            id: {[Op.eq]: historyId},
+        },
+    });
+};
+
 export const getHistory = async (accountId) => {
     return await History.findAll({
         include: [{
@@ -42,7 +53,7 @@ export const getHistory = async (accountId) => {
         where: {
             accountId: {[Op.eq]: accountId},
         },
-        attributes: ['id', 'createdAt', 'playTime'],
+        attributes: ['id', 'createdAt', 'playTime', 'image'],
         order: [['createdAt', 'DESC']],
     });
 };
