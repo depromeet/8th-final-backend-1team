@@ -44,3 +44,49 @@
                       type: integer
       500:
         $ref: '#/components/responses/500'
+
+'/histories/{historyId}/images':
+  post:
+    tags:
+      - History
+    summary: 'history 사진 업로드 api'
+    security:
+      - bearerAuth: []
+    description: '명상 중 사진을 업로드 하는 api'
+    parameters:
+      - name: historyId
+        description: 'history id'
+        in: path
+        type: 'integer'
+        required: true
+    requestBody:
+      required: true
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              image:
+                type: string
+                format: base64
+    responses:
+      200:
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                message:
+                  type: string
+                data:
+                  type: object
+                  properties:
+                    historyId:
+                      type: integer
+                    thumbnail:
+                      type: string
+      500:
+        $ref: '#/components/responses/500'
