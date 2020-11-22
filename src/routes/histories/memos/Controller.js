@@ -13,11 +13,11 @@ export const postMemo = async (req, res, next) => {
     logger.info(`postMemo request, { "historyId": ${historyId}, "title": ${title}, "detail": ${detail} }`);
 
     try {
-        const {memoId} = await MemoService.postMemo({historyId, title, detail});
+        const memoInfo = await MemoService.postMemo({historyId, title, detail});
 
         logger.info(`postMemo request success`);
 
-        return res.status(200).json(new ApiResponse({memoId}));
+        return res.status(200).json(new ApiResponse(memoInfo));
     } catch (e) {
         next(e);
     }

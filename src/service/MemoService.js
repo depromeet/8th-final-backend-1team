@@ -20,6 +20,7 @@ export const postMemo = async ({historyId, title, detail}) => {
 
     return {
         memoId: savedMemo.id,
+        title: savedMemo.title,
     };
 };
 
