@@ -23,7 +23,7 @@ export const saveHistory = async ({
 };
 
 export const saveImage = async ({historyId, imageUrl}) => {
-    await History.update({
+    return await History.update({
         image: imageUrl,
     },
     {

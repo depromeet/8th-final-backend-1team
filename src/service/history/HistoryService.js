@@ -40,8 +40,6 @@ export const postImage = async ({historyId, imageUrl}) => {
     await HistoryRepository.saveImage({historyId, imageUrl});
 
     logger.info(`postImage success`);
-
-    // return thumbnail
 };
 
 export const getHistory = async (accountId) => {
