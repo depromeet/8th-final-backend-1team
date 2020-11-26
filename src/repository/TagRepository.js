@@ -2,12 +2,60 @@ import {Op} from 'sequelize';
 import sequelize from 'sequelize';
 import {moduleLogger} from '@src/logger';
 import {Tag} from '@src/model/entity/Tag';
+import { concat } from 'lodash';
 
 const logger = moduleLogger('TagRepository');
 
 export const getTags = async () => {
-    return await Tag.findAll({
+    const tags1 = await Tag.findAll({
+        order: [
+            [sequelize.literal('random()')],
+        ],
+        limit: 5,
+        where: {
+            category_id: {[Op.eq]: 1},
+        },
     });
+    const tags2 = await Tag.findAll({
+        order: [
+            [sequelize.literal('random()')],
+        ],
+        limit: 5,
+        where: {
+            category_id: {[Op.eq]: 2},
+        },
+    });
+    const tags3 = await Tag.findAll({
+        order: [
+            [sequelize.literal('random()')],
+        ],
+        limit: 5,
+        where: {
+            category_id: {[Op.eq]: 3},
+        },
+    });
+    const tags4 = await Tag.findAll({
+        order: [
+            [sequelize.literal('random()')],
+        ],
+        limit: 5,
+        where: {
+            category_id: {[Op.eq]: 4},
+        },
+    });
+    const tags5 = await Tag.findAll({
+        order: [
+            [sequelize.literal('random()')],
+        ],
+        limit: 5,
+        where: {
+            category_id: {[Op.eq]: 5},
+        },
+    });
+    const tags = concat(tags1, tags2, tags3, tags4, tags5);
+    tags.sort(() => Math.random() - 0.5);
+
+    return tags;
 };
 
 export const getTag = async (tagIds) => {
