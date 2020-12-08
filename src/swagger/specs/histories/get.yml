@@ -40,5 +40,9 @@
                             type: array
                             items:
                               "$ref": "#/components/schemas/Incense"
+                          tags:
+                            type: array
+                            items:
+                              "$ref": "#/components/schemas/Tag"
       500:
         $ref: '#/components/responses/500'

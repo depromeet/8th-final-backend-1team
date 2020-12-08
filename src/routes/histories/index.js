@@ -2,7 +2,7 @@ import {Router} from 'express';
 import * as Controller from './Controller';
 import memoRouter from './memos';
 
-// import {validateBearerToken} from '@src/middleware/jwtMiddleware';
+import {validateBearerToken} from '@src/middleware/jwtMiddleware';
 import {validateParamMiddleware} from '@src/middleware/request-validate-middleware';
 import {
     PostHistoryBodyParameter, DeleteHistoryPathParameter,
@@ -12,13 +12,13 @@ const router = new Router();
 
 router.post(
     '/',
-    // validateBearerToken,
+    validateBearerToken,
     validateParamMiddleware(PostHistoryBodyParameter, null, null),
     Controller.postHistory);
 
 router.get(
     '/',
-    // validateBearerToken,
+    validateBearerToken,
     Controller.getHistory);
 
 router.delete(
