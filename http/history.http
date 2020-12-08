@@ -14,6 +14,11 @@ GET http://localhost:31923/api/v1/histories
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
 Content-Type: application/json
 
+### GET Histories with month
+GET http://localhost:31923/api/v1/histories?from=2020-12-01T00:00:00&to=2020-12-08T17:05:29
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+Content-Type: application/json
+
 ### DELETE History
 DELETE http://localhost:31923/api/v1/histories/3
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
@@ -47,3 +52,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxL
 Content-Type: application/json
 
 {}
+
+###

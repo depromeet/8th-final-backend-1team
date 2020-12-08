@@ -43,10 +43,10 @@ export const postImage = async ({historyId, imageUrl}) => {
     logger.info(`postImage success`);
 };
 
-export const getHistory = async (accountId) => {
+export const getHistories = async ({accountId, from, to}) => {
     logger.debug(`getHistory start, { "accountId": ${accountId} }`);
 
-    const histories = await HistoryRepository.getHistories(accountId);
+    const histories = await HistoryRepository.getHistories({accountId, from, to});
 
     if (!histories) {
         logger.error(`cannot find history info with accountId, { "accountId": "${accountId}" }`);

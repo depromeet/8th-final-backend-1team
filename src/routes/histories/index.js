@@ -26,7 +26,7 @@ router.post(
 router.get(
     '/',
     validateBearerToken,
-    Controller.getHistory);
+    Controller.getHistories);
 
 router.delete(
     '/:historyId',

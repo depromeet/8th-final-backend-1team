@@ -47,7 +47,29 @@ export const findAllByAccountId = async (accountId) => {
     });
 };
 
-export const getHistories = async (accountId) => {
+export const getHistories = async ({
+    accountId,
+    from,
+    to,
+}) => {
+    let where = {
+        accountId: {[Op.eq]: accountId},
+    };
+    where = from ?
+        where = {
+            ...where,
+            createdAt: {[Op.gt]: from},
+        } : where;
+
+    where = to ?
+        where = {
+            ...where,
+            createdAt: {
+                ...where.createdAt,
+                [Op.lt]: to,
+            },
+        } : where;
+
     return await History.findAll({
         include: [{
             model: Incense,
@@ -64,9 +86,7 @@ export const getHistories = async (accountId) => {
                 attributes: [],
             },
         }],
-        where: {
-            accountId: {[Op.eq]: accountId},
-        },
+        where: where,
         attributes: ['id', 'createdAt', 'playTime', 'image'],
         order: [['createdAt', 'DESC']],
     });

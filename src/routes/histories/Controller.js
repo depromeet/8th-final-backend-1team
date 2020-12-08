@@ -44,17 +44,18 @@ export const postImage = async (req, res, next) => {
     }
 };
 
-export const getHistory = async (req, res, next) => {
+export const getHistories = async (req, res, next) => {
     logger.debug(`getHistory request start`);
 
     const {accountId} = req;
+    const {from, to} = req.query;
 
-    logger.info(`getHistory request, { "accountId": ${accountId} }`);
+    logger.info(`getHistory request, { "accountId": ${accountId}, "from": ${from}, "to": ${to} }`);
 
     try {
-        const histories = await HistoryService.getHistory(accountId);
+        const histories = await HistoryService.getHistories({accountId, from, to});
 
-        logger.info(`getHisotry request success`);
+        logger.info(`getHistories request success`);
 
         // 나중에 lastId 추가
         return res.status(200).json(new ApiResponse({histories}));
