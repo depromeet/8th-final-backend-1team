@@ -30,6 +30,11 @@ export const init = (sequelize) =>
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
+            image: {
+                field: 'image',
+                type: DataTypes.STRING,
+                allowNull: true,
+            },
             accountId: {
                 field: 'account_id',
                 type: DataTypes.BIGINT,
