@@ -7,6 +7,10 @@ import {Video} from '@src/model/entity/Video';
 
 const logger = moduleLogger('IncenseRepository');
 
+export const findAll = async () => {
+    await Incense.findAll();
+};
+
 export const saveIncense = async ({
     name,
     detail,
@@ -33,10 +37,12 @@ export const getRecommendations = async (tagIds) => {
         attributes: ['id', 'name', 'image', 'detail'],
         include: [{
             model: Music,
+            as: 'music',
             attributes: ['id', 'url', 'content_length'],
         },
         {
             model: Video,
+            as: 'video',
             attributes: ['id', 'url'],
         }],
         where: {

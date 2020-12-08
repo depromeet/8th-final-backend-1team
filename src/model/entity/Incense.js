@@ -72,18 +72,22 @@ export const associate = () => {
     Incense.hasMany(History, {
         targetKey: 'id',
         foreignKey: 'incense_id',
+        as: 'histories',
     });
     Incense.belongsTo(Music, {
         targetKey: 'id',
         foreignKey: 'music_id',
+        as: 'music',
     });
     Incense.belongsTo(Video, {
         targetKey: 'id',
         foreignKey: 'video_id',
+        as: 'video',
     });
     Incense.belongsTo(Category, {
         targetKey: 'id',
         foreignKey: 'category_id',
+        as: 'category',
     });
 
     return Incense;

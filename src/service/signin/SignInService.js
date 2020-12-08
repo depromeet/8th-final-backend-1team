@@ -13,7 +13,7 @@ export const signInWithProvider = async (providerInfo) => {
     if (accountInfo) {
         logger.info(`signInWithProvider success with existed account, { "accountInfo": ${objectToString(accountInfo)} }`);
         return {
-            jwt: await createJWT(accountInfo.id),
+            jwt: await createJWT(accountInfo.account.id),
             userCreated: false,
         };
     }

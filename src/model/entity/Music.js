@@ -59,6 +59,7 @@ export const associate = () => {
     Music.hasOne(Incense, {
         targetKey: 'id',
         foreignKey: 'music_id',
+        as: 'incense',
     });
 
     return Music;

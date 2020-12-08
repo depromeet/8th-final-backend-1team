@@ -1,6 +1,5 @@
 import {DataTypes, Model} from 'sequelize';
 import {moduleLogger} from '@src/logger';
-import {config} from '@src/config';
 import {Tag} from '@src/model/entity/Tag';
 import {History} from '@src/model/entity/History';
 

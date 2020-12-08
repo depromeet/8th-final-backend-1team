@@ -25,7 +25,7 @@ export const getUserInfoWithProvider = async ({userId}) => {
         id: accountInfo.id,
         nickname: accountInfo.nickname,
         profileUrl: accountInfo.profileImage,
-        provider: accountInfo.Provider.providerName,
+        provider: accountInfo.provider.providerName,
     };
 };
 

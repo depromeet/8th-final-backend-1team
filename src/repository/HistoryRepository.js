@@ -41,6 +41,11 @@ export const findOneById = async (historyId) => {
 
 export const findAllByAccountId = async (accountId) => {
     return History.findAll({
+        include: [{
+            model: Incense,
+            as: 'incense',
+            attributes: ['id', 'name', 'categoryId'],
+        }],
         where: {
             accountId: {[Op.eq]: accountId},
         },
@@ -73,14 +78,17 @@ export const getHistories = async ({
     return await History.findAll({
         include: [{
             model: Incense,
+            as: 'incense',
             attributes: ['id', 'name', 'image', 'detail', 'categoryId'],
         },
         {
             model: Memo,
+            as: 'memos',
             attributes: ['id', 'title', 'detail'],
         },
         {
             model: Tag,
+            as: 'tags',
             attributes: ['id', 'name'],
             through: {
                 attributes: [],

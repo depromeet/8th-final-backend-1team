@@ -14,4 +14,9 @@ Content-Type: application/json
   "token": "kh8RiIwrDb3Jah4Xfg1IFeAOS6ZKUG7MecZYoQo9dNkAAAF0pXODlg"
 }
 
+### Get Me
+GET http://localhost:31923/api/v1/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+Content-Type: application/json
+
 ###

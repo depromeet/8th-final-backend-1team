@@ -68,18 +68,22 @@ export const associate = () => {
     History.hasMany(Memo, {
         targetKey: 'id',
         foreignKey: 'history_id',
+        as: 'memos',
     });
     History.belongsToMany(Tag, {
         through: History_Tag,
         foreignKey: 'history_id',
+        as: 'tags',
     });
     History.belongsTo(Incense, {
         targetKey: 'id',
         foreignKey: 'incense_id',
+        as: 'incense',
     });
     History.belongsTo(Account, {
         targetKey: 'id',
         foreignKey: 'account_id',
+        as: 'account',
     });
 
     return History;

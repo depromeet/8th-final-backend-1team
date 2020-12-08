@@ -50,10 +50,12 @@ export const associate = () => {
     Tag.belongsToMany(History, {
         through: History_Tag,
         foreignKey: 'tag_id',
+        as: 'histories',
     });
     Tag.belongsTo(Category, {
         targetKey: 'id',
         foreignKey: 'category_id',
+        as: 'category',
     });
 
     return Tag;

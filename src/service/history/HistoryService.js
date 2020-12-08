@@ -73,12 +73,16 @@ export const deleteHistory = async ({historyId, accountId}) => {
 };
 
 export const getReportsData = async ({accountId}) => {
-    const reportsData = await HistoryRepository.findAllByAccountId(accountId);
-
-    const reportsResult = _.go(reportsData,
+    const histores = await HistoryRepository.findAllByAccountId(accountId);
+    const reportsResult = _.go(histores,
         _.groupBy((report) => report.incenseId),
         L.entries,
-        L.map(([key, value]) => [key, value.length]),
+        L.map(([key, value]) =>
+            [key, {
+                name: value[0].incense.name,
+                count: value.length,
+            }],
+        ),
         _.object,
     );
 

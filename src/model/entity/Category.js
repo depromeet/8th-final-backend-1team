@@ -33,13 +33,15 @@ export const init = (sequelize) =>
     });
 
 export const associate = () => {
-    Category.hasOne(Tag, {
+    Category.hasMany(Tag, {
         targetKey: 'id',
         foreignKey: 'category_id',
+        as: 'tag',
     });
-    Category.hasOne(Incense, {
+    Category.hasMany(Incense, {
         targetKey: 'id',
         foreignKey: 'category_id',
+        as: 'incense',
     });
 
     return Category;

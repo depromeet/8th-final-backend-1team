@@ -57,6 +57,7 @@ export const associate = () => {
     Memo.belongsTo(History, {
         targetKey: 'id',
         foreignKey: 'history_id',
+        as: 'history',
     });
 
     return Memo;

@@ -55,6 +55,7 @@ export const associate = () => {
     Video.hasOne(Incense, {
         targetKey: 'id',
         foreignKey: 'music_id',
+        as: 'incense',
     });
 
     return Video;

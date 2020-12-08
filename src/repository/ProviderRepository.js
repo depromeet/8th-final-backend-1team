@@ -6,7 +6,7 @@ export const findProviderOneById = async (providerId) => {
     return Provider.findOne({
         include: [{
             model: Account,
-
+            as: 'account',
         }],
         where: {
             providerId: {[Op.eq]: providerId},

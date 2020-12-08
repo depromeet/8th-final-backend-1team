@@ -54,10 +54,12 @@ export const associate = () => {
     Account.hasOne(Provider, {
         targetKey: 'id',
         foreignKey: 'account_id',
+        as: 'provider',
     });
     Account.hasMany(History, {
         targetKey: 'id',
         foreignKey: 'account_id',
+        as: 'histories',
     });
     return Account;
 };

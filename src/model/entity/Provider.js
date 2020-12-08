@@ -51,6 +51,7 @@ export const associate = () => {
     Provider.belongsTo(Account, {
         targetKey: 'id',
         foreignKey: 'account_id',
+        as: 'account',
     });
 
     return Provider;
