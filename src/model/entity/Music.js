@@ -52,7 +52,6 @@ export const init = (sequelize) =>
             sequelize,
             tableName: 't_music',
             timestamps: false,
-            schema: config.db.default.schema,
         },
     );
 

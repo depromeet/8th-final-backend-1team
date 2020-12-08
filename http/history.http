@@ -1,0 +1,49 @@
+### Make History
+POST http://localhost:31923/api/v1/histories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+Content-Type: application/json
+
+{
+  "playTime": 300,
+  "incenseId": "1",
+  "tagIds": [2, 8]
+}
+
+### GET Histories
+GET http://localhost:31923/api/v1/histories
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+Content-Type: application/json
+
+### DELETE History
+DELETE http://localhost:31923/api/v1/histories/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+Content-Type: application/json
+
+{}
+
+### Make Memo
+POST http://localhost:31923/api/v1/histories/3/memos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+Content-Type: application/json
+
+{
+  "title": "테스트 해보자!!",
+  "detail": "ㅇㅅㅇ 테스트용인데 잘 될까??"
+}
+
+### Update Memo
+PUT http://localhost:31923/api/v1/histories/2/memos/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+Content-Type: application/json
+
+{
+  "title": "테스트2222",
+  "detail": "이건 업데이트가 된 메모여!!!!"
+}
+
+### DELETE Memo
+DELETE http://localhost:31923/api/v1/histories/3/memos/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+Content-Type: application/json
+
+{}

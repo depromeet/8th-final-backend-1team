@@ -11,13 +11,11 @@ export const saveHistory = async ({
     playTime,
     accountId,
     incenseId,
-    createdAt,
 }) => {
     const history = await History.create({
         playTime,
         accountId,
         incenseId,
-        createdAt,
     });
     return history.dataValues;
 };
@@ -33,7 +31,23 @@ export const saveImage = async ({historyId, imageUrl}) => {
     });
 };
 
-export const getHistory = async (accountId) => {
+export const findOneById = async (historyId) => {
+    return History.findOne({
+        where: {
+            id: {[Op.eq]: historyId},
+        },
+    });
+};
+
+export const findAllByAccountId = async (accountId) => {
+    return History.findAll({
+        where: {
+            accountId: {[Op.eq]: accountId},
+        },
+    });
+};
+
+export const getHistories = async (accountId) => {
     return await History.findAll({
         include: [{
             model: Incense,

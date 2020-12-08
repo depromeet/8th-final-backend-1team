@@ -48,7 +48,6 @@ export const init = (sequelize) =>
             sequelize,
             tableName: 't_video',
             timestamps: false,
-            schema: config.db.default.schema,
         },
     );
 

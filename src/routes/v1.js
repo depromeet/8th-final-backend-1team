@@ -3,7 +3,7 @@ import authRouter from './auth';
 import meRouter from './me';
 import userRouter from './users';
 import tagRouter from './tags';
-// import reportRouter from './reports';
+import reportRouter from './reports';
 import incenseRouter from './incenses';
 import recommendationRouter from './recommendations';
 import historyRouter from './histories';
@@ -18,5 +18,6 @@ router.use('/tags', tagRouter);
 router.use('/incenses', incenseRouter);
 router.use('/recommendations', recommendationRouter);
 router.use('/histories', historyRouter);
+router.use('/reports', reportRouter);
 
 export default router;

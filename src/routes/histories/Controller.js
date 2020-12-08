@@ -1,4 +1,3 @@
-import fs from 'fs';
 import {moduleLogger} from '@src/logger';
 import {objectToString} from '@src/util/conversion';
 import * as HistoryService from '@src/service/history/HistoryService';
@@ -10,7 +9,7 @@ export const postHistory = async (req, res, next) => {
     logger.debug(`postHistory request start`);
 
     const historyInfo = req.body;
-    historyInfo.accountId = 1;
+    historyInfo.accountId = req.accountId;
 
     logger.info(`postHistory request, { "historyInfo": ${objectToString(historyInfo)} }`);
 
@@ -48,7 +47,7 @@ export const postImage = async (req, res, next) => {
 export const getHistory = async (req, res, next) => {
     logger.debug(`getHistory request start`);
 
-    const accountId = 1;
+    const {accountId} = req;
 
     logger.info(`getHistory request, { "accountId": ${accountId} }`);
 
@@ -67,12 +66,15 @@ export const getHistory = async (req, res, next) => {
 export const deleteHistory = async (req, res, next) => {
     logger.debug(`deleteHistory request start`);
 
+    const {accountId} = req;
     const {historyId} = req.params;
 
     logger.info(`deleteHistory request, { "historyId": ${objectToString(historyId)} }`);
 
     try {
-        await HistoryService.deleteHistory(historyId);
+        await HistoryService.deleteHistory({
+            accountId, historyId,
+        });
 
         logger.info(`deleteHisotry request success`);
 

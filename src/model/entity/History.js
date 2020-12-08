@@ -1,6 +1,5 @@
-import {Model, DataTypes} from 'sequelize';
+import {DataTypes, Model} from 'sequelize';
 import {moduleLogger} from '@src/logger';
-import {config} from '@src/config';
 import {Memo} from './Memo';
 import {History_Tag} from './History_Tag';
 import {Account} from '@src/model/entity/Account';
@@ -62,7 +61,6 @@ export const init = (sequelize) =>
             sequelize,
             tableName: 't_history',
             timestamps: false,
-            schema: config.db.default.schema,
         },
     );
 

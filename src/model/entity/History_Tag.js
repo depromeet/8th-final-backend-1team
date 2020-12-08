@@ -43,5 +43,4 @@ export const link = (sequelize) =>
         sequelize,
         tableName: 't_history_tag',
         timestamps: false,
-        schema: config.db.default.schema,
     });

@@ -51,7 +51,6 @@ export const init = (sequelize) =>
         sequelize,
         tableName: 't_memo',
         timestamps: false,
-        schema: config.db.default.schema,
     });
 
 export const associate = () => {

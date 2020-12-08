@@ -23,6 +23,7 @@ router.put(
 
 router.delete(
     '/:memoId',
+    validateBearerToken,
     validateParamMiddleware(null, MemoPathParameter, null),
     Controller.deleteMemo);
 

@@ -2,6 +2,11 @@ import {IsNumberString, IsString} from 'class-validator';
 
 export class MemoBodyParameter {
     @IsString({
+        message: 'invalid title parameter',
+    })
+    title;
+
+    @IsString({
         message: 'invalid detail parameter',
     })
     detail;

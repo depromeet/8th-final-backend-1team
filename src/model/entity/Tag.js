@@ -43,7 +43,6 @@ export const init = (sequelize) =>
             sequelize,
             tableName: 't_tag',
             timestamps: false,
-            schema: config.db.default.schema,
         },
     );
 

@@ -45,7 +45,6 @@ export const init = (sequelize) =>
         sequelize,
         tableName: 't_provider',
         timestamps: false,
-        schema: config.db.default.schema,
     });
 
 export const associate = () => {

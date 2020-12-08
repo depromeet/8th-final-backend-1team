@@ -7,13 +7,14 @@ const logger = moduleLogger('MemoController');
 export const postMemo = async (req, res, next) => {
     logger.debug(`postMemo request start`);
 
+    const {accountId} = req;
     const {historyId} = req.params;
     const {title, detail} = req.body;
 
     logger.info(`postMemo request, { "historyId": ${historyId}, "title": ${title}, "detail": ${detail} }`);
 
     try {
-        const memoInfo = await MemoService.postMemo({historyId, title, detail});
+        const memoInfo = await MemoService.postMemo({historyId, title, detail, accountId});
 
         logger.info(`postMemo request success`);
 
@@ -26,13 +27,14 @@ export const postMemo = async (req, res, next) => {
 export const putMemo = async (req, res, next) => {
     logger.debug(`putMemo request start`);
 
+    const {accountId} = req;
     const {historyId, memoId} = req.params;
-    const {detail} = req.body;
+    const {title, detail} = req.body;
 
-    logger.info(`putMemo request, { "historyId": ${historyId}, "memoId": ${memoId}, "detail": ${detail} }`);
+    logger.info(`putMemo request, { "historyId": ${historyId}, "memoId": ${memoId}, "title": ${title}, "detail": ${detail} }`);
 
     try {
-        const memoInfo = await MemoService.updateMemo({historyId, memoId, detail});
+        const memoInfo = await MemoService.updateMemo({historyId, memoId, title, detail, accountId});
 
         logger.info(`putMemo request success`);
 
@@ -45,12 +47,13 @@ export const putMemo = async (req, res, next) => {
 export const deleteMemo = async (req, res, next) => {
     logger.debug(`deleteMemo request start`);
 
+    const {accountId} = req;
     const {historyId, memoId} = req.params;
 
     logger.info(`deleteMemo request, { "historyId": ${historyId}, "memoId": ${memoId} }`);
 
     try {
-        await MemoService.deleteMemo({historyId, memoId});
+        await MemoService.deleteMemo({historyId, memoId, accountId});
 
         logger.info(`deleteMemo request success`);
 
