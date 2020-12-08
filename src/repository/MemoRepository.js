@@ -22,7 +22,7 @@ export const saveMemo = async ({
 };
 
 export const updateMemo = async ({historyId, memoId, detail, updatedAt}) => {
-    return Memo.update({
+    return await Memo.update({
         detail: detail,
         updatedAt: updatedAt,
     },

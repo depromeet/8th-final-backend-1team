@@ -2,7 +2,8 @@ import {Router} from 'express';
 import * as Controller from './Controller';
 import memoRouter from './memos';
 
-// import {validateBearerToken} from '@src/middleware/jwtMiddleware';
+import {upload} from '@src/middleware/multer-middleware';
+import {validateBearerToken} from '@src/middleware/jwtMiddleware';
 import {validateParamMiddleware} from '@src/middleware/request-validate-middleware';
 import {
     PostHistoryBodyParameter, DeleteHistoryPathParameter,
@@ -15,6 +16,11 @@ router.post(
     // validateBearerToken,
     validateParamMiddleware(PostHistoryBodyParameter, null, null),
     Controller.postHistory);
+
+router.post(
+    '/:historyId/images',
+    upload.single('image'),
+    Controller.postImage);
 
 router.get(
     '/',
