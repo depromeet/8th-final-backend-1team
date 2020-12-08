@@ -14,15 +14,15 @@ export const config = {
     },
     db: {
         default: {
-            dialect: process.env.DB_DEFAULT_TYPE || 'postgres',
+            dialect: process.env.DB_DEFAULT_TYPE || 'mysql',
             username: process.env.DB_DEFAULT_USERNAME || '',
             password: process.env.DB_DEFAULT_PASSWORD || '',
-            database: process.env.DB_DEFAULT_DATABASE ||'postgres',
+            database: process.env.DB_DEFAULT_DATABASE ||'fragraph',
             schema: process.env.DB_DEFAULT_SCHEMA ||'fragraph',
             host: process.env.DB_DEFAULT_HOST || '127.0.0.1',
             port: process.env.DB_DEFAULT_PORT ?
                 parseInt(process.env.DB_DEFAULT_PORT) :
-                5432,
+                3306,
             logging: process.env.DB_DEFAULT_LOGGING === 'true',
             maximumPoolSize: process.env.DB_DEFAULT_MAXIMUM_POOL_SIZE ?
                 parseInt(process.env.DB_DEFAULT_MAXIMUM_POOL_SIZE) :

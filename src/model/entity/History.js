@@ -51,6 +51,12 @@ export const init = (sequelize) =>
                 allowNull: false,
                 defaultValue: DataTypes.NOW,
             },
+            updatedAt: {
+                field: 'updated_at',
+                type: 'TIMESTAMP',
+                allowNull: false,
+                defaultValue: DataTypes.NOW,
+            },
         },
         {
             sequelize,

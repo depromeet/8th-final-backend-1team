@@ -21,6 +21,11 @@ export const init = (sequelize) =>
                 allowNull: false,
                 autoIncrement: true,
             },
+            title: {
+                field: 'title',
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
             url: {
                 field: 'url',
                 type: DataTypes.STRING,

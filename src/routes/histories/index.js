@@ -13,22 +13,24 @@ const router = new Router();
 
 router.post(
     '/',
-    // validateBearerToken,
+    validateBearerToken,
     validateParamMiddleware(PostHistoryBodyParameter, null, null),
     Controller.postHistory);
 
 router.post(
     '/:historyId/images',
+    validateBearerToken,
     upload.single('image'),
     Controller.postImage);
 
 router.get(
     '/',
-    // validateBearerToken,
+    validateBearerToken,
     Controller.getHistory);
 
 router.delete(
     '/:historyId',
+    validateBearerToken,
     validateParamMiddleware(null, DeleteHistoryPathParameter, null),
     Controller.deleteHistory);
 

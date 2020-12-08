@@ -9,11 +9,6 @@ const logger = moduleLogger('Sequelize');
 
 const sequelize = new Sequelize({
     dialect: config.db.default.dialect,
-    // dialect: 'sqlite',
-    // storage: 'memory',
-    // sync: {
-    //     force: true,
-    // },
     database: config.db.default.database,
     username: config.db.default.username,
     password: config.db.default.password,

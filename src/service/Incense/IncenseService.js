@@ -5,7 +5,7 @@ import * as IncenseRepository from '@src/repository/IncenseRepository';
 const logger = moduleLogger('IncenseService');
 
 export const getIncense = async ({name, detail, weight, image, videoId, musicId, categoryId}) => {
-    logger.debug(`getIncense start, { "incenseInfo": ${name, detail, weight, image, videoId, musicId, categoryId} }`);
+    // logger.debug(`getIncense start, { "incenseInfo": etail, weight, image, videoId, musicId, categoryId} }`);
 
     const savedIncense = await IncenseRepository.saveIncense({
         name: name,
