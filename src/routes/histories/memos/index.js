@@ -15,6 +15,12 @@ router.post(
     validateParamMiddleware(MemoBodyParameter, PostMemoPathParameter, null),
     Controller.postMemo);
 
+router.get(
+    '/:memoId',
+    validateBearerToken,
+    validateParamMiddleware(null, MemoPathParameter, null),
+    Controller.getMemo);
+
 router.put(
     '/:memoId',
     validateBearerToken,

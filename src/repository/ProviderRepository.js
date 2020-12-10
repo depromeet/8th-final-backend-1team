@@ -7,11 +7,11 @@ export const findProviderOneById = async (providerId) => {
         include: [{
             model: Account,
             as: 'account',
+            attributes: ['id', 'nickname', 'profileImage', 'createdAt', 'updatedAt']
         }],
         where: {
             providerId: {[Op.eq]: providerId},
         },
-        raw: true,
     });
 };
 

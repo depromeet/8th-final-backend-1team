@@ -4,6 +4,15 @@ import {Memo} from '@src/model/entity/Memo';
 
 const logger = moduleLogger('MemoRepository');
 
+export const findOneById = async ({memoId, historyId}) => {
+    return Memo.findOne({
+        where: {
+            id: {[Op.eq]: memoId},
+            historyId: {[Op.eq]: historyId},
+        },
+    });
+}
+
 export const saveMemo = async ({
     title,
     detail,

@@ -11,7 +11,7 @@ export const signInWithProvider = async (providerInfo) => {
 
     const accountInfo = await ProviderRepository.findProviderOneById(providerInfo.id);
     if (accountInfo) {
-        logger.info(`signInWithProvider success with existed account, { "accountInfo": ${objectToString(accountInfo)} }`);
+        logger.info(`signInWithProvider success with existed account, { "accountInfo": ${objectToString(accountInfo.dataValues)} }`);
         return {
             jwt: await createJWT(accountInfo.account.id),
             userCreated: false,

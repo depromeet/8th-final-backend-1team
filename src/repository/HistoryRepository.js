@@ -89,7 +89,7 @@ export const getHistories = async ({
         {
             model: Tag,
             as: 'tags',
-            attributes: ['id', 'name'],
+            attributes: ['id', 'name', 'weight'],
             through: {
                 attributes: [],
             },

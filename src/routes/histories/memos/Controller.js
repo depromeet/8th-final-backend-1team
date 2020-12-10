@@ -2,7 +2,23 @@ import {moduleLogger} from '@src/logger';
 import * as MemoService from '@src/service/MemoService';
 import {ApiResponse} from '@src/model/api/ApiResponse';
 
+
 const logger = moduleLogger('MemoController');
+
+export const getMemo = async (req, res, next) => {
+    logger.debug(`getMemo request start`);
+    const {accountId} = req;
+    const {historyId, memoId} = req.params;
+
+    logger.info(`getMemo request, { "historyId": ${historyId}, "accountId": ${accountId}, "memoId": ${memoId} }`);
+
+    try {
+        const memo = await MemoService.getMemo({historyId, memoId, accountId});
+        return res.status(200).json(new ApiResponse(memo));
+    } catch (e) {
+        next(e);
+    }
+};
 
 export const postMemo = async (req, res, next) => {
     logger.debug(`postMemo request start`);
@@ -34,11 +50,11 @@ export const putMemo = async (req, res, next) => {
     logger.info(`putMemo request, { "historyId": ${historyId}, "memoId": ${memoId}, "title": ${title}, "detail": ${detail} }`);
 
     try {
-        const memoInfo = await MemoService.updateMemo({historyId, memoId, title, detail, accountId});
+        const {memoId: id} = await MemoService.updateMemo({historyId, memoId, title, detail, accountId});
 
         logger.info(`putMemo request success`);
 
-        return res.status(200).json(new ApiResponse({memoInfo}));
+        return res.status(200).json(new ApiResponse({memoId: id}));
     } catch (e) {
         next(e);
     }
