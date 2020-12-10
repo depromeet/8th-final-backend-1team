@@ -30,6 +30,9 @@ app.use(rTracerExpressMiddleware({
     headerName: 'trace-id',
 }));
 app.use(morgan('combined', {
+    skip: function(req, res) {
+        return req.path === '/ping';
+    },
     stream: {
         write: (message) => logger.info(message),
     },
