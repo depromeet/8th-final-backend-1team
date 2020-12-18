@@ -2,6 +2,7 @@ import axios from 'axios';
 import * as faker from 'faker';
 import {stringify} from 'query-string';
 import {decode} from 'jsonwebtoken';
+import {OAuth2Client} from 'google-auth-library';
 import {config} from '@src/config';
 import {OAuthFailedException} from '@src/exception/OAuthFailedException';
 import {moduleLogger} from '@src/logger';
@@ -12,13 +13,15 @@ const logger = moduleLogger('SocialLoginMiddleware');
 
 export const kakaoLoginMiddlewrae = async (req, res, next) => {
     try {
-        logger.info(`get user info by kakao { "token": "${req.body.token}" }`);
+        const {token} = req.body;
+        logger.info(`get user info by kakao`);
 
         const {data} = await axios.get(`https://kapi.kakao.com/v2/user/me`, {
-            headers: {Authorization: `Bearer ${req.body.token}`},
+            headers: {Authorization: `Bearer ${token}`},
         }).catch((e) => logger.error(`failed to login by kakao { error: ${e.message}`));
 
         if (!data || !data.id || !data.properties || !data.properties.nickname) {
+            logger.error('cannot find kakao login result data or propoerties');
             throw new OAuthFailedException('failed to login with kakao, please check your token');
         }
 
@@ -35,10 +38,40 @@ export const kakaoLoginMiddlewrae = async (req, res, next) => {
     }
 };
 
+export const googleLoginMiddleware = async (req, res, next) => {
+    try {
+        const {token} = req.body;
+        logger.info(`get user info by google`);
+
+        const client = new OAuth2Client(config.auth.google.clientId);
+        const ticket = await client.verifyIdToken({
+            idToken: token,
+            audience: config.auth.google.clientId,
+        });
+        const payload = ticket.getPayload();
+        if (!payload || !payload.sub) {
+            logger.error('cannot find google login jwt payload or userId');
+            throw new OAuthFailedException('failed to login with google, please check your token');
+        }
+
+        req.oauthProvider = {
+            provider: 'google',
+            id: typeof payload.sub === 'number' ? payload.sub.toString() : payload.sub,
+            nickname: payload.name ? payload.name : `Google${faker.name.firstName()}${faker.random.number(10 * 4)}`,
+        };
+
+        logger.info(`success get user info by google, { "providerInfo", : ${objectToString(req.oauthProvider)} }`);
+        next();
+    } catch (e) {
+        logger.error(`failed to login by google { error: ${e.message}`);
+        next(e);
+    }
+};
+
 export const appleLoginMiddleware = async (req, res, next) => {
     try {
         const code = req.body.token;
-        logger.info(`get user info by apple { "token": "${code}" }`);
+        logger.info(`get user info by apple { "code": "${code}" }`);
 
         const appleJwtClaims = {
             iss: config.auth.apple.teamId,

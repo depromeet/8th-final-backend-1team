@@ -50,5 +50,8 @@ export const config = {
             privateKey: process.env.APPLE_PRIVATE_KEY || '',
             clientId: process.env.APPLE_CLIENT_ID || '',
         },
+        google: {
+            clientId: process.env.GOOGLE_CLIENT_ID || '',
+        },
     },
 };

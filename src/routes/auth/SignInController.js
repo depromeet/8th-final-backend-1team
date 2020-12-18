@@ -7,7 +7,7 @@ const logger = moduleLogger('SignInController');
 
 export const signInBySocialLogin = async (req, res, next) => {
     const {oauthProvider} = req;
-    logger.info(`signInByKakao request, { "providerInfo": ${objectToString(oauthProvider)} }`);
+    logger.info(`signInBySocialLogin request, { "providerInfo": ${objectToString(oauthProvider)} }`);
 
     try {
         const {jwt, userCreated} = await SignInService.signInWithProvider(oauthProvider);
