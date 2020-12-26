@@ -11,7 +11,8 @@ Content-Type: application/json
 
 ### GET Histories
 GET http://localhost:31923/api/v1/histories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+#Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50X2lkIjoxLCJpc3MiOiJhY2NvdW50cy5kZXByb21lZXQuY29tIiwiaWF0IjoxNjA3NDQ2NDg5LCJleHAiOjE2MDgwNTEyODl9.95zcUuVPC6dlYFpEndLam9Uf6kt4M5uiAKyzjb4AVjQ
+Authorization: Bearer 1234567890
 Content-Type: application/json
 
 ### GET Histories with month
